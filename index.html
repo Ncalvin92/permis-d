@@ -145,6 +145,22 @@
     padding: 20px 16px;
     margin-bottom: 16px;
   }
+  .mode-progress-bar {
+    margin-bottom: 8px;
+  }
+  .mode-progress-bar .mpb-header {
+    display: flex; justify-content: space-between;
+    font-size: 12px; color: var(--muted); margin-bottom: 4px;
+  }
+  .mode-progress-bar .mpb-header .mpb-label { font-weight: 600; }
+  .mode-progress-bar .mpb-header .mpb-pct { color: var(--text); font-weight: 700; font-family: 'Barlow Condensed', sans-serif; }
+  .mode-progress-bar .mpb-track {
+    height: 7px; background: var(--bg3); border-radius: 99px; overflow: hidden;
+  }
+  .mode-progress-bar .mpb-fill {
+    height: 100%; border-radius: 99px;
+    transition: width 0.6s cubic-bezier(0.4,0,0.2,1);
+  }
   .chart-title {
     font-family: 'Barlow Condensed', sans-serif;
     font-size: 13px; font-weight: 700; letter-spacing: 0.05em;
@@ -220,6 +236,46 @@
     border-radius: 99px;
     overflow: hidden;
     background: var(--bg3);
+    transition: opacity 0.3s;
+  }
+  .quiz-progress-graph.hidden { display: none; }
+
+  /* Toggle switch ON/OFF */
+  .progress-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+  .toggle-switch {
+    position: relative;
+    width: 44px;
+    height: 24px;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+  .toggle-switch input { display: none; }
+  .toggle-track {
+    position: absolute; inset: 0;
+    background: var(--red-light);
+    border-radius: 99px;
+    transition: background 0.25s;
+  }
+  .toggle-switch input:checked + .toggle-track { background: var(--green-light); }
+  .toggle-thumb {
+    position: absolute;
+    top: 3px; left: 3px;
+    width: 18px; height: 18px;
+    background: #fff;
+    border-radius: 50%;
+    transition: transform 0.25s;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+  }
+  .toggle-switch input:checked ~ .toggle-thumb { transform: translateX(20px); }
+  .toggle-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px; font-weight: 700; letter-spacing: 0.04em;
+    text-transform: uppercase; color: var(--muted);
   }
   .qpg-seg {
     flex: 1;
@@ -247,7 +303,7 @@
   }
   .memo-title .arr { margin-left: auto; transition: transform 0.2s; }
   .memo-title.open .arr { transform: rotate(180deg); }
-  .memo-body { padding: 16px; display: block; font-size: 13px; color: var(--text); line-height: 1.8; }
+  .memo-body { padding: 16px; display: none; font-size: 13px; color: var(--text); line-height: 1.8; }
   .memo-body.show { display: block; }
   .memo-body h3 {
     font-family: 'Barlow Condensed', sans-serif;
@@ -331,6 +387,46 @@
   .open-input::placeholder { color: var(--muted); }
 
   .nav-row { display: grid; grid-template-columns: 1fr 2fr; gap: 10px; }
+  .btn-quit-quiz {
+    width: 100%; padding: 11px; background: transparent;
+    color: var(--muted); border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px; font-weight: 600; letter-spacing: 0.04em;
+    cursor: pointer; transition: all 0.2s; margin-top: 10px;
+  }
+  .btn-quit-quiz:active { background: var(--bg3); color: var(--red-light); }
+  /* Modal reprendre/recommencer */
+  .modal-overlay {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.7);
+    z-index: 300;
+    display: flex; align-items: center; justify-content: center;
+    padding: 20px;
+  }
+  .modal-box {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px 20px;
+    max-width: 340px; width: 100%;
+    animation: slideUp 0.3s both;
+  }
+  .modal-box h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 20px; font-weight: 700; margin-bottom: 8px; color: var(--text);
+  }
+  .modal-box p { font-size: 14px; color: var(--muted); margin-bottom: 16px; line-height: 1.5; }
+  .modal-actions { display: flex; flex-direction: column; gap: 8px; }
+  .modal-btn {
+    padding: 13px; border-radius: var(--radius-sm); border: none;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 17px; font-weight: 700; letter-spacing: 0.04em;
+    cursor: pointer; transition: all 0.18s;
+  }
+  .modal-btn.primary { background: var(--accent); color: #fff; }
+  .modal-btn.secondary { background: var(--bg3); color: var(--text); border: 1px solid var(--border); }
+  .modal-btn.danger { background: var(--red-bg); color: var(--red-light); border: 1px solid var(--red-border); }
   .btn-back {
     padding: 15px; background: var(--bg3); border: 1.5px solid var(--border);
     border-radius: var(--radius-sm); color: var(--muted);
@@ -410,6 +506,10 @@
     grid-template-columns: 1fr 1fr;
     gap: 8px;
     margin-bottom: 14px;
+  }
+  .mode-selector .mode-btn:nth-child(5),
+  .mode-selector .mode-btn:nth-child(6) {
+    /* Pas de changement, garder 2 colonnes */
   }
   .mode-btn {
     padding: 12px 8px;
@@ -584,6 +684,7 @@
       <h1>Quiz Permis D</h1>
       <p>CATÉGORIE D — TRANSPORT EN COMMUN</p>
     </div>
+    <div style="margin-left:auto;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.05em;background:rgba(61,111,255,0.15);border:1px solid rgba(61,111,255,0.3);border-radius:6px;padding:4px 10px;color:var(--accent2);">V 12</div>
   </div>
 
   <!-- HOME -->
@@ -623,13 +724,23 @@
           </div>
           <div class="legend-item">
             <div class="legend-dot red"></div>
-            <div class="legend-text"><strong id="leg-wrong">0</strong><br>Encore ratées ✗</div>
+            <div class="legend-text"><strong id="leg-wrong">0</strong><br>Questions ratées</div>
           </div>
           <div class="legend-item">
             <div class="legend-dot gray"></div>
             <div class="legend-text"><strong id="leg-unseen">406</strong><br>Non vues encore</div>
           </div>
         </div>
+      </div>
+      <!-- Barres de progression par mode -->
+      <div id="mode-bars" style="margin-top:16px;border-top:1px solid var(--border);padding-top:14px;">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;">Taux de réussite par mode</div>
+        <div id="mode-bar-all" class="mode-progress-bar"></div>
+        <div id="mode-bar-permisd" class="mode-progress-bar"></div>
+        <div id="mode-bar-memo" class="mode-progress-bar"></div>
+        <div id="mode-bar-oral" class="mode-progress-bar"></div>
+        <div id="mode-bar-failed" class="mode-progress-bar"></div>
+        <div id="mode-bar-revision" class="mode-progress-bar"></div>
       </div>
     </div>
 
@@ -640,20 +751,46 @@
     <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;">Choisir le mode :</div>
     <div class="mode-selector">
       <button class="mode-btn active" id="mode-all" onclick="setMode('all')">
-        <span class="mode-icon">🎯</span>Tout mélangé<br><span style="font-size:10px;font-weight:400;text-transform:none;letter-spacing:0">Toutes les fiches</span>
+        <span class="mode-icon">🎯</span>Tout mélangé<br>
+        <span style="font-size:10px;font-weight:400;text-transform:none;letter-spacing:0">406 questions</span><br>
+        <span id="modestats-all" style="font-size:11px;color:#22c55e;font-weight:700">—</span>
       </button>
       <button class="mode-btn" id="mode-permisd" onclick="setMode('permisd')">
-        <span class="mode-icon">🚌</span>Permis D<br><span style="font-size:10px;font-weight:400;text-transform:none;letter-spacing:0">Fiches 1 à 20</span>
+        <span class="mode-icon">🚌</span>Permis D<br>
+        <span style="font-size:10px;font-weight:400;text-transform:none;letter-spacing:0">Fiches 1 à 20</span><br>
+        <span id="modestats-permisd" style="font-size:11px;color:#22c55e;font-weight:700">—</span>
       </button>
       <button class="mode-btn" id="mode-memo" onclick="setMode('memo')">
-        <span class="mode-icon">📋</span>Mémo CTCR<br><span style="font-size:10px;font-weight:400;text-transform:none;letter-spacing:0">Réglementation</span>
+        <span class="mode-icon">📋</span>Mémo CTCR<br>
+        <span style="font-size:10px;font-weight:400;text-transform:none;letter-spacing:0">Réglementation</span><br>
+        <span id="modestats-memo" style="font-size:11px;color:#22c55e;font-weight:700">—</span>
       </button>
       <button class="mode-btn" id="mode-oral" onclick="setMode('oral')">
-        <span class="mode-icon">🎤</span>Fiches Orales<br><span style="font-size:10px;font-weight:400;text-transform:none;letter-spacing:0">Mode récitation</span>
+        <span class="mode-icon">🎤</span>Fiches Orales<br>
+        <span style="font-size:10px;font-weight:400;text-transform:none;letter-spacing:0">Mode récitation</span><br>
+        <span id="modestats-oral" style="font-size:11px;color:#22c55e;font-weight:700">—</span>
+      </button>
+      <button class="mode-btn" id="mode-failed" onclick="setMode('failed')">
+        <span class="mode-icon">⚡</span>Questions ratées<br>
+        <span style="font-size:10px;font-weight:400;text-transform:none;letter-spacing:0"><span id="mode-failed-count">0</span> questions</span>
+      </button>
+      <button class="mode-btn" id="mode-revision" onclick="setMode('revision')">
+        <span class="mode-icon">📖</span>Révision<br>
+        <span style="font-size:10px;font-weight:400;text-transform:none;letter-spacing:0"><span id="mode-revision-count">0</span> questions</span>
       </button>
     </div>
 
-    <button class="btn-reset-stats" onclick="resetStats()">🗑 Réinitialiser la progression</button>
+    <button class="btn-reset-stats" onclick="resetStats()">🗑 Réinitialiser toute la progression</button>
+    <div id="mode-reset-section" style="margin-top:8px;">
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;">Réinitialiser les stats d'un mode :</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
+        <button onclick="resetModeStats('all')" style="padding:7px;background:transparent;color:var(--muted);border:1px solid var(--border);border-radius:var(--radius-sm);font-size:11px;cursor:pointer;">🎯 Tout mélangé</button>
+        <button onclick="resetModeStats('permisd')" style="padding:7px;background:transparent;color:var(--muted);border:1px solid var(--border);border-radius:var(--radius-sm);font-size:11px;cursor:pointer;">🚌 Permis D</button>
+        <button onclick="resetModeStats('memo')" style="padding:7px;background:transparent;color:var(--muted);border:1px solid var(--border);border-radius:var(--radius-sm);font-size:11px;cursor:pointer;">📋 Mémo CTCR</button>
+        <button onclick="resetModeStats('oral')" style="padding:7px;background:transparent;color:var(--muted);border:1px solid var(--border);border-radius:var(--radius-sm);font-size:11px;cursor:pointer;">🎤 Fiches Orales</button>
+        <button onclick="resetModeStats('revision')" style="padding:7px;background:transparent;color:var(--muted);border:1px solid var(--border);border-radius:var(--radius-sm);font-size:11px;cursor:pointer;">📖 Révision</button>
+      </div>
+    </div>
 
     <div class="memo-section">
       <div class="memo-title open" onclick="toggleMemo(this)">
@@ -862,11 +999,19 @@
   <div id="quiz-screen">
     <div class="progress-area">
       <div class="progress-info">
-        <span>Question <strong id="q-current">1</strong> / 10</span>
+        <span>Question <strong id="q-current">1</strong> / <span id="q-total-count">10</span></span>
         <span id="q-fiche-label">Fiche —</span>
       </div>
       <!-- Graphique 10 segments en temps réel -->
-      <div class="quiz-progress-graph" id="quiz-graph"></div>
+      <div class="progress-toggle">
+        <label class="toggle-switch">
+          <input type="checkbox" id="quiz-graph-toggle" onchange="toggleQuizGraph(this)">
+          <div class="toggle-track"></div>
+          <div class="toggle-thumb"></div>
+        </label>
+        <span class="toggle-label">Barres de progression</span>
+      </div>
+      <div class="quiz-progress-graph hidden" id="quiz-graph"></div>
       <div class="progress-track"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
     </div>
     <div class="question-card" id="question-card">
@@ -879,6 +1024,7 @@
       <button class="btn-back" id="btn-back" onclick="goBack()" disabled>← Retour</button>
       <button class="btn-next" id="btn-next" onclick="goNext()">Suivant →</button>
     </div>
+    <button class="btn-quit-quiz" onclick="quitQuizConfirm()">✕ Quitter le quiz</button>
   </div>
 
   <!-- RESULTS -->
@@ -891,7 +1037,15 @@
         <span>Fiche <strong id="oral-current">1</strong> / <strong id="oral-total">12</strong></span>
         <span id="oral-mode-label" style="color:var(--accent2)">FICHES ORALES</span>
       </div>
-      <div class="quiz-progress-graph" id="oral-graph"></div>
+      <div class="progress-toggle">
+        <label class="toggle-switch">
+          <input type="checkbox" id="oral-graph-toggle" onchange="toggleOralGraph(this)">
+          <div class="toggle-track"></div>
+          <div class="toggle-thumb"></div>
+        </label>
+        <span class="toggle-label">Barres de progression</span>
+      </div>
+      <div class="quiz-progress-graph hidden" id="oral-graph"></div>
       <div class="progress-track"><div class="progress-fill" id="oral-progress-fill" style="width:0%"></div></div>
     </div>
     <div id="oral-card-area"></div>
@@ -899,6 +1053,7 @@
       <button class="btn-back" id="oral-btn-back" onclick="oralBack()" disabled>← Retour</button>
       <button class="btn-next" id="oral-btn-next" onclick="oralNext()">Révéler ▼</button>
     </div>
+    <button class="btn-quit-quiz" onclick="quitOralConfirm()">⏸ Quitter les fiches orales</button>
   </div>
 
   <!-- ORAL RESULTS -->
@@ -1608,8 +1763,18 @@ const TOTAL = ALL_QUESTIONS.length;
 //   quizCount: number
 // ═══════════════════════════════════════════════
 
+const APP_VERSION = 'v12'; // Changer à chaque mise à jour pour reset les stats
+
 function loadStats() {
   try {
+    // Reset automatique si nouvelle version
+    const storedVersion = localStorage.getItem('permisD_version');
+    if (storedVersion !== APP_VERSION) {
+      localStorage.removeItem('permisD_stats_v2');
+      localStorage.removeItem('permisD_stats');
+      localStorage.removeItem('permisD_oral_stats');
+      localStorage.setItem('permisD_version', APP_VERSION);
+    }
     const s = localStorage.getItem('permisD_stats_v2');
     if (s) return JSON.parse(s);
     // Migration depuis ancienne version
@@ -1624,8 +1789,8 @@ function loadStats() {
       saveStats(migrated);
       return migrated;
     }
-    return { mastered: {}, wrong: {}, failedLast: [], quizCount: 0 };
-  } catch(e) { return { mastered: {}, wrong: {}, failedLast: [], quizCount: 0 }; }
+    return { mastered: {}, wrong: {}, failedLast: [], quizCount: 0, modeStats: {}, cycleQueue: {}, revisionList: [] };
+  } catch(e) { return { mastered: {}, wrong: {}, failedLast: [], quizCount: 0, modeStats: {}, cycleQueue: {}, revisionList: [] }; }
 }
 
 function saveStats(stats) {
@@ -1633,27 +1798,55 @@ function saveStats(stats) {
 }
 
 function resetStats() {
-  if (confirm('Réinitialiser toute la progression ?')) {
-    localStorage.removeItem('permisD_stats_v2');
-    localStorage.removeItem('permisD_stats');
-    updateHomeStats();
-  }
+  const modal = document.createElement('div');
+  modal.className = 'modal-overlay';
+  modal.id = 'reset-modal';
+  modal.innerHTML = `
+    <div class="modal-box">
+      <h3>⚠️ Réinitialiser la progression ?</h3>
+      <p>Cette action supprimera <strong>toutes</strong> tes statistiques et données de progression. Irréversible.</p>
+      <div class="modal-actions">
+        <button class="modal-btn secondary" onclick="document.getElementById('reset-modal').remove()">✕ Annuler</button>
+        <button class="modal-btn danger" onclick="doResetStats()">🗑 Oui, tout effacer</button>
+      </div>
+    </div>`;
+  document.body.appendChild(modal);
 }
 
-function recordResults(results) {
-  // results = [{id, correct: bool}, ...]
+function doResetStats() {
+  const m = document.getElementById('reset-modal');
+  if (m) m.remove();
+  localStorage.removeItem('permisD_stats_v2');
+  localStorage.removeItem('permisD_stats');
+  localStorage.removeItem('permisD_oral_stats');
+  // Init aide-mémoire : si class "show", afficher
+  document.querySelectorAll('.memo-body.show').forEach(el => {
+    el.style.display = 'block';
+    const title = el.previousElementSibling;
+    if (title) {
+      const arr = title.querySelector('.arr');
+      if (arr) arr.textContent = '▲';
+    }
+  });
+  updateHomeStats();
+}
+
+function recordResults(results, mode) {
   const stats = loadStats();
   const failedIds = [];
+  if (!stats.modeStats) stats.modeStats = {};
+  if (!stats.modeStats[mode]) stats.modeStats[mode] = { correct: 0, wrong: 0 };
+  if (!stats.revisionList) stats.revisionList = [];
   results.forEach(r => {
     if (r.correct) {
-      // Question réussie → maîtrisée, retirer des "wrong" courants
       stats.mastered[r.id] = true;
-      delete stats.wrong[r.id];
+      if (mode !== 'revision') delete stats.wrong[r.id];
+      stats.modeStats[mode].correct = (stats.modeStats[mode].correct || 0) + 1;
     } else {
-      // Question ratée → pas dans mastered (même si elle l'était avant si on veut rejouer)
-      // On garde mastered si déjà maîtrisée mais on note l'échec courant
       stats.wrong[r.id] = (stats.wrong[r.id] || 0) + 1;
       failedIds.push(r.id);
+      if (!stats.revisionList.includes(r.id)) stats.revisionList.push(r.id);
+      stats.modeStats[mode].wrong = (stats.modeStats[mode].wrong || 0) + 1;
     }
   });
   stats.failedLast = failedIds;
@@ -1661,13 +1854,77 @@ function recordResults(results) {
   saveStats(stats);
 }
 
+
+// ═══════════════════════════════════════════════
+// NOUVELLES FONCTIONS — Cycle, Stats par mode, Révision
+// ═══════════════════════════════════════════════
+
+function resetModeStats(mode) {
+  const modeLabels = {
+    all: 'Tout mélangé', permisd: 'Permis D', memo: 'Mémo CTCR',
+    oral: 'Fiches Orales', failed: 'Questions ratées', revision: 'Révision'
+  };
+  const label = modeLabels[mode] || mode;
+  const modal = document.createElement('div');
+  modal.className = 'modal-overlay';
+  modal.id = 'reset-mode-modal';
+  modal.innerHTML = `
+    <div class="modal-box">
+      <h3>⚠️ Réinitialiser ${label} ?</h3>
+      <p>Les statistiques du mode <strong>${label}</strong> seront effacées. Cette action est irréversible.</p>
+      <div class="modal-actions">
+        <button class="modal-btn secondary" onclick="document.getElementById('reset-mode-modal').remove()">✕ Annuler</button>
+        <button class="modal-btn danger" onclick="doResetModeStats('${mode}')">🗑 Oui, effacer</button>
+      </div>
+    </div>`;
+  document.body.appendChild(modal);
+}
+
+function doResetModeStats(mode) {
+  const m = document.getElementById('reset-mode-modal');
+  if (m) m.remove();
+  const stats = loadStats();
+  if (!stats.modeStats) stats.modeStats = {};
+  stats.modeStats[mode] = { correct: 0, wrong: 0 };
+  if (mode === 'revision') stats.revisionList = [];
+  saveStats(stats);
+  updateHomeStats();
+}
+
+function getCycleQueue(mode, pool) {
+  const stats = loadStats();
+  if (!stats.cycleQueue) stats.cycleQueue = {};
+  let queue = (stats.cycleQueue[mode] || []).filter(id => pool.find(q => q.id === id));
+  if (queue.length < Math.min(10, pool.length)) {
+    const allIds = pool.map(q => q.id);
+    const seen = new Set(queue);
+    const remaining = allIds.filter(id => !seen.has(id));
+    const shuffled = shuffle(remaining);
+    queue = [...queue, ...shuffled];
+    stats.cycleQueue[mode] = queue;
+    saveStats(stats);
+  }
+  return queue;
+}
+
+function consumeCycleQueue(mode, usedIds) {
+  const stats = loadStats();
+  if (!stats.cycleQueue) stats.cycleQueue = {};
+  let queue = stats.cycleQueue[mode] || [];
+  queue = queue.filter(id => !usedIds.has(id));
+  stats.cycleQueue[mode] = queue;
+  saveStats(stats);
+}
+
+// Ajout dans recordResults pour la compatibilité avec les nouvelles structures
+const _origRecordResults = recordResults;
+
 function updateHomeStats() {
   const stats = loadStats();
   const masteredCount = Object.keys(stats.mastered).length;
-  // "Encore ratées" = dans failedLast (ratées au dernier quiz et pas encore retentées avec succès)
   const failedLastIds = stats.failedLast || [];
-  // wrong actuellement = questions qui ont été ratées et pas encore réussies
   const currentWrongCount = Object.keys(stats.wrong).length;
+  const revisionCount = (stats.revisionList || []).length;
   const unseenCount = TOTAL - masteredCount - currentWrongCount;
   const pct = Math.round(masteredCount / TOTAL * 100);
 
@@ -1675,19 +1932,14 @@ function updateHomeStats() {
   document.getElementById('stat-mastered').textContent = masteredCount;
   document.getElementById('stat-quizzes').textContent = stats.quizCount || 0;
 
-  // Donut
-  const circumference = 100; // stroke-dasharray = % of 100
-  const okPct = masteredCount / TOTAL * 100;
-  const wrongPct = currentWrongCount / TOTAL * 100;
-
   const donutOk = document.getElementById('donut-ok');
   const donutWrong = document.getElementById('donut-wrong');
   if (donutOk && donutWrong) {
-    // Wrong d'abord (offset = 0), puis OK (offset = wrongPct)
+    const okPct = masteredCount / TOTAL * 100;
+    const wrongPct = currentWrongCount / TOTAL * 100;
     donutWrong.style.strokeDasharray = `${wrongPct.toFixed(2)} ${(100-wrongPct).toFixed(2)}`;
     donutWrong.style.strokeDashoffset = '0';
     donutOk.style.strokeDasharray = `${okPct.toFixed(2)} ${(100-okPct).toFixed(2)}`;
-    // offset = -(wrongPct) pour placer le vert après le rouge
     donutOk.style.strokeDashoffset = `${wrongPct.toFixed(2)}`;
   }
   document.getElementById('donut-pct').textContent = pct + '%';
@@ -1695,17 +1947,98 @@ function updateHomeStats() {
   document.getElementById('leg-wrong').textContent = currentWrongCount;
   document.getElementById('leg-unseen').textContent = Math.max(0, unseenCount);
 
-  // Badge questions ratées
+  // Renommer "Encore ratées ✗" en "Questions ratées"
+  const legWrongEl = document.querySelector('.legend-dot.red + .legend-text');
+  if (legWrongEl) legWrongEl.innerHTML = `<strong id="leg-wrong">${currentWrongCount}</strong><br>Questions ratées`;
+
+  // Mettre à jour compteur mode Failed
+  const failedCountEl = document.getElementById('mode-failed-count');
+  if (failedCountEl) failedCountEl.textContent = currentWrongCount;
+  const revisionCountEl = document.getElementById('mode-revision-count');
+  if (revisionCountEl) revisionCountEl.textContent = revisionCount;
+
+  // Statistiques par mode
+  const modeStats = stats.modeStats || {};
+  const modeKeys = ['all', 'permisd', 'memo', 'oral'];
+  modeKeys.forEach(m => {
+    const ms = modeStats[m] || { correct: 0, wrong: 0 };
+    const total2 = ms.correct + ms.wrong;
+    const pct2 = total2 > 0 ? Math.round(ms.correct / total2 * 100) : 0;
+    const el = document.getElementById('modestats-'+m);
+    if (el) el.innerHTML = total2 > 0 ? `${pct2}%<br><span style="font-size:10px;color:var(--muted)">${ms.correct}✓ ${ms.wrong}✗</span>` : '<span style="font-size:10px;color:var(--muted)">—</span>';
+  });
+
   const badge = document.getElementById('failed-badge');
   if (badge) {
     const fl = failedLastIds.length;
     if (fl > 0) {
-      badge.textContent = '⚠ ' + fl + ' question' + (fl>1?'s':'') + ' ratée' + (fl>1?'s':'') + ' du dernier quiz — réapparaîtront en premier';
+      badge.textContent = '⚠ ' + fl + ' question' + (fl>1?'s':'') + ' ratée' + (fl>1?'s':'') + ' du dernier quiz';
       badge.style.display = 'block';
     } else {
       badge.style.display = 'none';
     }
   }
+
+  // Badge "En pause" sur le mode concerné
+  ['all','permisd','memo','failed','revision','oral'].forEach(m => {
+    const el = document.getElementById('mode-' + m);
+    if (!el) return;
+    const hasPause = (m !== 'oral' && savedQuizState && savedQuizState.mode === m) ||
+                     (m === 'oral' && savedOralState);
+    const badge = el.querySelector('.pause-badge');
+    if (hasPause) {
+      if (!badge) {
+        const b = document.createElement('span');
+        b.className = 'pause-badge';
+        b.style.cssText = 'display:block;font-size:10px;color:#f59e0b;font-weight:700;margin-top:2px;';
+        b.textContent = '⏸ En pause';
+        el.appendChild(b);
+      }
+    } else {
+      if (badge) badge.remove();
+    }
+  });
+
+  // Barres de progression par mode
+  const modeConfig = [
+    { key: 'all', label: '🎯 Tout mélangé' },
+    { key: 'permisd', label: '🚌 Permis D' },
+    { key: 'memo', label: '📋 Mémo CTCR' },
+    { key: 'oral', label: '🎤 Fiches Orales' },
+    { key: 'failed', label: '⚡ Questions ratées' },
+    { key: 'revision', label: '📖 Révision' },
+  ];
+  const modeStatsData = stats.modeStats || {};
+  modeConfig.forEach(mc => {
+    const el = document.getElementById('mode-bar-' + mc.key);
+    if (!el) return;
+    const ms = modeStatsData[mc.key] || { correct: 0, wrong: 0 };
+    const tot = ms.correct + ms.wrong;
+    const pct = tot > 0 ? Math.round(ms.correct / tot * 100) : 0;
+    const barColor = pct >= 80 ? '#22c55e' : pct >= 50 ? '#f59e0b' : tot > 0 ? '#ef4444' : '#3a3a50';
+    el.innerHTML = tot > 0 ? `
+      <div class="mpb-header">
+        <span class="mpb-label">${mc.label}</span>
+        <span class="mpb-pct" style="color:${barColor}">${pct}% <span style="font-size:11px;color:var(--muted)">(${ms.correct}✓ ${ms.wrong}✗)</span></span>
+      </div>
+      <div class="mpb-track"><div class="mpb-fill" style="width:${pct}%;background:${barColor}"></div></div>
+    ` : '';
+  });
+
+  // Mettre à jour la couleur ✓/✗ dans les boutons de mode
+  modeConfig.forEach(mc => {
+    const el = document.getElementById('modestats-' + mc.key);
+    if (!el) return;
+    const ms = modeStatsData[mc.key] || { correct: 0, wrong: 0 };
+    const tot = ms.correct + ms.wrong;
+    const pct = tot > 0 ? Math.round(ms.correct / tot * 100) : 0;
+    if (tot > 0) {
+      el.innerHTML = `<span style="color:#22c55e">${ms.correct}✓</span> <span style="color:#ef4444">${ms.wrong}✗</span>`;
+    } else {
+      el.innerHTML = '<span style="color:var(--muted)">—</span>';
+    }
+  });
+
 }
 
 // ═══════════════════════════════════════════════
@@ -1773,8 +2106,11 @@ function normalizeUnits(s) {
     .replace(/(\d+)\s*h(?:eures?)?\s*(\d+)\s*(?:mn|min|minutes?)?/gi, '$1h$2')
     // "X heures puis Y heures" ou "Xh + Yh" → "Xh yh"
     .replace(/(\d+)\s*h(?:eures?)?\s*(?:puis|et|\+)\s*(\d+)\s*h(?:eures?)?/gi, '$1h $2h')
+    // Normaliser km/h avec espaces variés : "70 km / h" → "70kmh", "70km/h" → "70kmh"
+    .replace(/(\d+(?:\.\d+)?)\s*km\s*\/\s*h\b/gi, '$1kmh')
+    .replace(/(\d+(?:\.\d+)?)\s*km\/h\b/gi, '$1kmh')
     // Unités de distance
-    .replace(/(\d+(?:\.\d+)?)\s*(km\/h|km\/h|km|m\/s)/gi, '$1$2')
+    .replace(/(\d+(?:\.\d+)?)\s*(km|m\/s)/gi, '$1$2')
     .replace(/(\d+(?:\.\d+)?)\s*(metres?|mètres?|meter?|m)\b/gi, '$1m')
     .replace(/(\d+(?:\.\d+)?)\s*(kilometres?|kilomètres?|km)\b/gi, '$1km')
     .replace(/(\d+(?:\.\d+)?)\s*(tonnes?|t)\b/gi, '$1t')
@@ -1805,6 +2141,7 @@ function normalize(s) {
   r = r.replace(/\bkm\/h\b/g, 'kmh');                     // km/h → kmh pour éviter le slash
   r = normalizeUnits(r);                                   // unités normalisées
   r = r.replace(/[^a-z0-9%\.]/g, ' ');                    // ponctuation → espace (garde . et %)
+  r = r.replace(/kmh/g, 'kmh'); // garder kmh intact
   r = r.replace(/\s+/g, ' ').trim();
   return r;
 }
@@ -1826,11 +2163,40 @@ function stripStop(s) {
     .join(' ');
 }
 
+
+// ═══════════════════════════════════════════════
+// RÉPONSES STRICTES — certaines questions requièrent la réponse complète exacte
+// ═══════════════════════════════════════════════
+const STRICT_ANSWERS = {
+  // À froid / moteur froid
+  'f6q4': ['moteur froid', 'a froid', 'moteur a froid'],
+  // De l'air (admission moteur diesel)
+  'f2q8': ['de l\'air', 'air'],
+  // Centre de contrôle des véhicules lourds
+  'f11q5': ['centre de controle des vehicules lourds', 'centre de controle des vehicule lourd'],
+  // Porte-à-faux arrière
+  'f20q6': ['porte-a-faux arriere', 'porte a faux arriere', 'porte a faux (arriere)', 'porte-a-faux (arriere)'],
+};
+
+function isCorrectStrict(ans, qId) {
+  if (!STRICT_ANSWERS[qId]) return null; // pas de validation stricte pour cette question
+  const aNorm = ans.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9 ]/g, ' ').replace(/\s+/g, ' ').trim();
+  return STRICT_ANSWERS[qId].some(accepted => {
+    const accNorm = accepted.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9 ]/g, ' ').replace(/\s+/g, ' ').trim();
+    return aNorm === accNorm || aNorm.includes(accNorm);
+  });
+}
+
 // ═══════════════════════════════════════════════
 // isCorrect — comparaison multi-niveaux ultra-souple
 // ═══════════════════════════════════════════════
-function isCorrect(ans, correct) {
+function isCorrect(ans, correct, qId) {
   if (!ans || ans.trim() === '') return false;
+
+  // Vérification stricte pour certaines questions
+  if (qId && STRICT_ANSWERS[qId]) {
+    return isCorrectStrict(ans, qId);
+  }
 
   const aNorm  = normalize(ans);
   const aStrip = stripStop(ans);
@@ -1863,28 +2229,38 @@ function isCorrect(ans, correct) {
       return aNorm.includes(cNorm) || cNorm.includes(aNorm);
     }
     const matchCount = cWords.filter(w => aStrip.includes(w)).length;
-    return matchCount >= Math.ceil(cWords.length * 0.7);
+    // Seuil plus strict pour les réponses longues (>3 mots clés)
+    const threshold = cWords.length > 3 ? 0.8 : 0.7;
+    return matchCount >= Math.ceil(cWords.length * threshold);
   });
 }
 
 // ═══════════════════════════════════════════════
 // MODE SÉLECTEUR
 // ═══════════════════════════════════════════════
-let currentMode = 'all'; // 'all' | 'permisd' | 'memo' | 'oral'
+let currentMode = 'all'; // 'all' | 'permisd' | 'memo' | 'oral' | 'failed' | 'revision'
 
 function setMode(mode) {
   currentMode = mode;
-  ['all','permisd','memo','oral'].forEach(m => {
-    document.getElementById('mode-'+m).classList.toggle('active', m === mode);
+  ['all','permisd','memo','oral','failed','revision'].forEach(m => {
+    const el = document.getElementById('mode-'+m);
+    if (el) el.classList.toggle('active', m === mode);
   });
   const btn = document.getElementById('btn-start-main');
   if (mode === 'oral') {
     btn.textContent = '🎤 Lancer les fiches orales';
     btn.onclick = () => startOral();
+  } else if (mode === 'failed') {
+    btn.textContent = '⚡ Lancer Questions ratées';
+    btn.onclick = () => startQuiz();
+  } else if (mode === 'revision') {
+    btn.textContent = '📖 Lancer la Révision';
+    btn.onclick = () => startQuiz();
   } else {
     btn.textContent = '🚀 Lancer le quiz';
     btn.onclick = () => startQuiz();
   }
+  updateHomeStats();
 }
 
 function getQuestionsForMode(mode) {
@@ -1892,6 +2268,14 @@ function getQuestionsForMode(mode) {
     return ALL_QUESTIONS.filter(q => typeof q.f === 'number' && q.f >= 1 && q.f <= 20);
   } else if (mode === 'memo') {
     return ALL_QUESTIONS.filter(q => String(q.f).toUpperCase().includes('MEMO') || String(q.f) === 'MÉMO');
+  } else if (mode === 'failed') {
+    const stats = loadStats();
+    const failedIds = new Set(Object.keys(stats.wrong || {}));
+    return ALL_QUESTIONS.filter(q => failedIds.has(q.id));
+  } else if (mode === 'revision') {
+    const stats = loadStats();
+    const revisionIds = new Set(stats.revisionList || []);
+    return ALL_QUESTIONS.filter(q => revisionIds.has(q.id));
   } else if (mode === 'all') {
     return ALL_QUESTIONS;
   }
@@ -1904,32 +2288,258 @@ function getQuestionsForMode(mode) {
 let questions, answers, current;
 let quizResults = [];
 
-function startQuiz() {
+// État sauvegardé pour reprendre le quiz
+let savedQuizState = null; // { questions, answers, quizResults, current, mode }
+let savedOralState = null; // { oralFiches, oralCurrent, oralResults, oralSavedInputs, oralSavedScores, mode }
+
+
+// ═══════════════════════════════════════════════
+// REPRENDRE / RECOMMENCER UN QUIZ SAUVEGARDÉ
+// ═══════════════════════════════════════════════
+
+function showResumeModal() {
+  const s = savedQuizState;
+  const modeLabels = {
+    all: 'Tout mélangé', permisd: 'Permis D', memo: 'Mémo CTCR',
+    failed: 'Questions ratées', revision: 'Révision'
+  };
+  const label = modeLabels[s.mode] || s.mode;
+  const answered = s.answers.filter(a => a !== null).length;
+  const modal = document.createElement('div');
+  modal.className = 'modal-overlay';
+  modal.id = 'resume-modal';
+  modal.innerHTML = `
+    <div class="modal-box">
+      <h3>⏸ Quiz en pause</h3>
+      <p>Tu as un quiz <strong>${label}</strong> en cours — question <strong>${s.current + 1}/${s.questions.length}</strong> (${answered} réponse${answered > 1 ? 's' : ''} donnée${answered > 1 ? 's' : ''}).</p>
+      <div class="modal-actions">
+        <button class="modal-btn primary" onclick="resumeQuiz()">▶ Reprendre où j'en étais</button>
+        <button class="modal-btn danger" onclick="restartQuizFresh()">🔄 Recommencer un nouveau quiz</button>
+      </div>
+    </div>`;
+  document.body.appendChild(modal);
+}
+
+function resumeQuiz() {
+  const m = document.getElementById('resume-modal');
+  if (m) m.remove();
+  if (!savedQuizState) { startQuiz(true); return; }
+  // Restaurer l'état
+  questions = savedQuizState.questions;
+  answers = savedQuizState.answers;
+  quizResults = savedQuizState.quizResults;
+  current = savedQuizState.current;
+  // Ne pas effacer savedQuizState — on le garde jusqu'à la fin du quiz
+  document.getElementById('home-screen').style.display = 'none';
+  document.getElementById('results-screen').style.display = 'none';
+  document.getElementById('oral-screen').style.display = 'none';
+  document.getElementById('oral-results-screen').style.display = 'none';
+  document.getElementById('quiz-screen').style.display = 'block';
+  const qTotalEl = document.getElementById('q-total-count');
+  if (qTotalEl) qTotalEl.textContent = questions.length;
+  renderQuestion();
+}
+
+function restartQuizFresh() {
+  const m = document.getElementById('resume-modal');
+  if (m) m.remove();
+  savedQuizState = null;
+  startQuiz(true); // true = pas de vérification du state sauvegardé
+}
+
+// ═══════════════════════════════════════════════
+// QUIT ET REPRENDRE POUR LES FICHES ORALES
+// ═══════════════════════════════════════════════
+
+function quitOralConfirm() {
+  // Sauvegarder l'état oral courant
+  savedOralState = {
+    oralFiches: [...oralFiches],
+    oralCurrent,
+    oralResults: {...oralResults},
+    oralSavedInputs: JSON.parse(JSON.stringify(oralSavedInputs)),
+    oralSavedScores: JSON.parse(JSON.stringify(oralSavedScores)),
+  };
+  const total = oralFiches.length;
+  const done = oralCurrent;
+  const modal = document.createElement('div');
+  modal.className = 'modal-overlay';
+  modal.id = 'quit-oral-modal';
+  modal.innerHTML = `
+    <div class="modal-box">
+      <h3>⏸ Quitter les fiches orales ?</h3>
+      <p>Tu es à la fiche <strong>${oralCurrent + 1}/${total}</strong> (${done} fiche${done > 1 ? 's' : ''} évaluée${done > 1 ? 's' : ''}).</p>
+      <div class="modal-actions">
+        <button class="modal-btn primary" onclick="closeOralQuitModal()">▶ Continuer</button>
+        <button class="modal-btn secondary" onclick="quitOralAndSave()">⏸ Quitter et reprendre plus tard</button>
+        <button class="modal-btn danger" onclick="quitOralAndRestart()">🔄 Quitter et recommencer</button>
+      </div>
+    </div>`;
+  document.body.appendChild(modal);
+}
+
+function closeOralQuitModal() {
+  const m = document.getElementById('quit-oral-modal');
+  if (m) m.remove();
+}
+
+function quitOralAndSave() {
+  closeOralQuitModal();
+  goHome();
+}
+
+function quitOralAndRestart() {
+  savedOralState = null;
+  closeOralQuitModal();
+  goHome();
+}
+
+function showResumeOralModal() {
+  const s = savedOralState;
+  const done = s.oralCurrent;
+  const total = s.oralFiches.length;
+  const modal = document.createElement('div');
+  modal.className = 'modal-overlay';
+  modal.id = 'resume-oral-modal';
+  modal.innerHTML = `
+    <div class="modal-box">
+      <h3>⏸ Fiches orales en pause</h3>
+      <p>Tu as des fiches orales en cours — fiche <strong>${done + 1}/${total}</strong> (${done} fiche${done > 1 ? 's' : ''} évaluée${done > 1 ? 's' : ''}).</p>
+      <div class="modal-actions">
+        <button class="modal-btn primary" onclick="resumeOral()">▶ Reprendre où j'en étais</button>
+        <button class="modal-btn danger" onclick="restartOralFresh()">🔄 Recommencer depuis le début</button>
+      </div>
+    </div>`;
+  document.body.appendChild(modal);
+}
+
+function resumeOral() {
+  const m = document.getElementById('resume-oral-modal');
+  if (m) m.remove();
+  if (!savedOralState) { startOral(); return; }
+  // Restaurer l'état oral
+  oralFiches = savedOralState.oralFiches;
+  oralCurrent = savedOralState.oralCurrent;
+  oralResults = {...savedOralState.oralResults};
+  oralSavedInputs = JSON.parse(JSON.stringify(savedOralState.oralSavedInputs));
+  oralSavedScores = JSON.parse(JSON.stringify(savedOralState.oralSavedScores));
+  oralRevealed = false;
+
+  document.getElementById('home-screen').style.display = 'none';
+  document.getElementById('quiz-screen').style.display = 'none';
+  document.getElementById('results-screen').style.display = 'none';
+  document.getElementById('oral-results-screen').style.display = 'none';
+  document.getElementById('oral-screen').style.display = 'block';
+  renderOralWithResult();
+}
+
+function restartOralFresh() {
+  const m = document.getElementById('resume-oral-modal');
+  if (m) m.remove();
+  savedOralState = null;
+  startOral();
+}
+
+function quitQuizConfirm() {
+  // Sauvegarder l'état courant au moment du clic
+  savedQuizState = {
+    questions: [...questions],
+    answers: [...answers],
+    quizResults: [...quizResults],
+    current,
+    mode: currentMode
+  };
+  const total = questions.length;
+  const modal = document.createElement('div');
+  modal.className = 'modal-overlay';
+  modal.id = 'quit-modal';
+  modal.innerHTML = `
+    <div class="modal-box">
+      <h3>⏸ Quitter le quiz ?</h3>
+      <p>Tu es à la question <strong>${current + 1}/${total}</strong>. Que veux-tu faire ?</p>
+      <div class="modal-actions">
+        <button class="modal-btn primary" onclick="closeModal()">▶ Continuer le quiz</button>
+        <button class="modal-btn secondary" onclick="quitAndSave()">⏸ Quitter et reprendre plus tard</button>
+        <button class="modal-btn danger" onclick="quitAndRestart()">🔄 Quitter et recommencer</button>
+      </div>
+    </div>`;
+  document.body.appendChild(modal);
+}
+
+function closeModal() {
+  const m = document.getElementById('quit-modal');
+  if (m) m.remove();
+}
+
+function quitAndSave() {
+  // L'état est déjà sauvegardé dans savedQuizState
+  closeModal();
+  goHome();
+}
+
+function quitAndRestart() {
+  // Effacer l'état sauvegardé → le prochain quiz repart de zéro
+  savedQuizState = null;
+  closeModal();
+  goHome();
+}
+
+function startQuiz(resume) {
+  // Si un état sauvegardé existe pour ce mode, proposer de reprendre
+  if (!resume && savedQuizState && savedQuizState.mode === currentMode) {
+    showResumeModal();
+    return;
+  }
+  // Effacer l'état sauvegardé si on relance volontairement (pas resume)
+  if (!resume) savedQuizState = null;
+
   const pool = getQuestionsForMode(currentMode);
+  if (pool.length === 0) {
+    alert('Aucune question dans ce mode pour l\'instant !');
+    return;
+  }
+
+  // MODE QUESTIONS RATÉES : adapter le nombre de questions (1 à 10)
+  let quizSize = 10;
+  if (currentMode === 'failed' || currentMode === 'revision') {
+    quizSize = Math.min(10, Math.max(1, pool.length));
+  }
+
   const stats = loadStats();
-  const mastered = stats.mastered || {};
   const wrong = stats.wrong || {};
   const failedLast = stats.failedLast || [];
-
   const allById = {};
   pool.forEach(q => allById[q.id] = q);
 
-  const failedQs = failedLast.map(id => allById[id]).filter(Boolean);
-  const usedIds = new Set(failedQs.map(q => q.id));
+  let selectedQuestions;
 
-  const rest = pool.filter(q => !usedIds.has(q.id)).sort((a, b) => {
-    const wa = wrong[a.id] || 0, wb = wrong[b.id] || 0;
-    const ma = mastered[a.id] ? 1 : 0, mb = mastered[b.id] ? 1 : 0;
-    if (ma !== mb) return ma - mb;
-    if (wa !== wb) return wb - wa;
-    return Math.random() - 0.5;
-  });
+  if (currentMode === 'failed') {
+    // Mode questions ratées : seulement les questions ratées, taille adaptée
+    selectedQuestions = shuffle(pool).slice(0, quizSize);
+  } else if (currentMode === 'revision') {
+    // Mode révision : questions de la liste révision
+    selectedQuestions = shuffle(pool).slice(0, quizSize);
+  } else {
+    // Autres modes : cycle + priorité questions ratées
+    const failedQs = failedLast.map(id => allById[id]).filter(Boolean);
+    const usedIds = new Set(failedQs.map(q => q.id));
 
-  const shuffledPool = shuffle(rest.slice(0, Math.min(40, rest.length)));
-  const needed = Math.max(0, 10 - failedQs.length);
-  questions = [...shuffle(failedQs), ...shuffledPool.slice(0, needed)].slice(0, 10);
-  answers = new Array(10).fill(null);
-  quizResults = new Array(10).fill(null);
+    // Rotation cycle
+    const cycleQueue = getCycleQueue(currentMode, pool);
+    const cycleFiltered = cycleQueue.filter(id => !usedIds.has(id));
+    const fromCycle = cycleFiltered.slice(0, Math.min(40, cycleFiltered.length)).map(id => allById[id]).filter(Boolean);
+
+    const needed = Math.max(0, quizSize - failedQs.length);
+    selectedQuestions = [...shuffle(failedQs), ...fromCycle.slice(0, needed)].slice(0, quizSize);
+
+    // Consommer du cycle
+    const usedFromCycle = new Set(selectedQuestions.map(q => q.id));
+    consumeCycleQueue(currentMode, usedFromCycle);
+  }
+
+  questions = selectedQuestions;
+  answers = new Array(questions.length).fill(null);
+  quizResults = new Array(questions.length).fill(null);
   current = 0;
 
   document.getElementById('home-screen').style.display = 'none';
@@ -1937,14 +2547,20 @@ function startQuiz() {
   document.getElementById('oral-screen').style.display = 'none';
   document.getElementById('oral-results-screen').style.display = 'none';
   document.getElementById('quiz-screen').style.display = 'block';
+
+  // Mettre à jour le compteur de questions
+  const qCountEl = document.getElementById('q-total-count');
+  if (qCountEl) qCountEl.textContent = questions.length;
+
   renderQuestion();
 }
 
 function renderQuizGraph() {
   const g = document.getElementById('quiz-graph');
   if (!g) return;
+  const n = questions ? questions.length : 10;
   let html = '';
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < n; i++) {
     let cls = i === current ? 'current' : i < current ? (quizResults[i] === true ? 'done-ok' : 'done-fail') : 'pending';
     html += `<div class="qpg-seg ${cls}"></div>`;
   }
@@ -1957,13 +2573,16 @@ function renderQuestion() {
   const isMastered = stats.mastered && stats.mastered[q.id];
   const wrongCount = stats.wrong ? (stats.wrong[q.id] || 0) : 0;
   const isFailedLast = stats.failedLast && stats.failedLast.includes(q.id);
-  const pct = (current/10)*100;
+  const totalQ = questions.length;
+  const pct = (current/totalQ)*100;
 
   document.getElementById('q-current').textContent = current+1;
+  const qTotalEl = document.getElementById('q-total-count');
+  if (qTotalEl) qTotalEl.textContent = totalQ;
   document.getElementById('q-fiche-label').textContent = `Fiche ${q.f}`;
   document.getElementById('progress-fill').style.width = pct+'%';
   document.getElementById('btn-back').disabled = current===0;
-  document.getElementById('btn-next').textContent = current===9 ? 'Voir les résultats →' : 'Suivant →';
+  document.getElementById('btn-next').textContent = current===totalQ-1 ? 'Voir les résultats →' : 'Suivant →';
   renderQuizGraph();
 
   let typeLabel, typeBadgeClass;
@@ -2024,8 +2643,8 @@ function goNext() {
     area.style.animation='none'; area.offsetHeight; area.style.animation='shake 0.4s ease';
     return;
   }
-  quizResults[current] = isCorrect(answers[current], q.correct);
-  if (current<9) { current++; renderQuestion(); } else { showResults(); }
+  quizResults[current] = isCorrect(answers[current], q.correct, q.id);
+  if (current<questions.length-1) { current++; renderQuestion(); } else { showResults(); }
 }
 
 function showResults() {
@@ -2033,9 +2652,11 @@ function showResults() {
   const rs = document.getElementById('results-screen');
   rs.style.display='block';
   let score=0;
-  const items = questions.map((q,i)=>{ const ok=isCorrect(answers[i],q.correct); if(ok)score++; quizResults[i]=ok; return{q,ans:answers[i],ok}; });
-  recordResults(items.map(item=>({id:item.q.id,correct:item.ok})));
-  const pct=Math.round(score/10*100);
+  const items = questions.map((q,i)=>{ const ok=isCorrect(answers[i],q.correct,q.id); if(ok)score++; quizResults[i]=ok; return{q,ans:answers[i],ok}; });
+  recordResults(items.map(item=>({id:item.q.id,correct:item.ok})), currentMode);
+  savedQuizState = null; // Quiz terminé normalement, effacer l'état sauvegardé
+  const totalQ = questions.length;
+  const pct=Math.round(score/totalQ*100);
   const cls=pct>=80?'great':pct>=60?'ok':'bad';
   const emoji=pct>=80?'🎉':pct>=60?'👍':'📚';
   const msg=pct>=80?'Excellent travail !':pct>=60?'Pas mal, continue !':'Encore un effort !';
@@ -2047,12 +2668,35 @@ function showResults() {
   const statsAfter=loadStats();
   const masteredAfter=Object.keys(statsAfter.mastered).length;
   const masteredPct=Math.round(masteredAfter/TOTAL*100);
-  let html=`<div class="score-card ${cls}"><div class="score-emoji">${emoji}</div><div class="score-num">${score}/10</div><div class="score-label">${pct}% de bonnes réponses</div>${segHtml}${wrongNote}<div style="margin-top:12px;padding-top:10px;border-top:1px solid #2a2a3a;font-size:13px;color:#7070a0;">Progression : <strong style="color:#22c55e">${masteredAfter}</strong>/<strong style="color:#e8e8f0">${TOTAL}</strong> maîtrisées (<strong style="color:#5b8aff">${masteredPct}%</strong>)</div><div class="score-msg">${msg}</div></div><div class="results-list">`;
+  // Stats cumulées du mode — affichées EN PREMIER (au-dessus du score)
+  const msCumul = (statsAfter.modeStats || {})[currentMode] || { correct: 0, wrong: 0 };
+  const msCumulTot = msCumul.correct + msCumul.wrong;
+  const msCumulPct = msCumulTot > 0 ? Math.round(msCumul.correct / msCumulTot * 100) : 0;
+  const modeLabel2 = { all: 'Tout mélangé', permisd: 'Permis D', memo: 'Mémo CTCR', failed: 'Questions ratées', revision: 'Révision', oral: 'Fiches Orales' }[currentMode] || currentMode;
+  const msCumulColor = msCumulPct >= 80 ? '#22c55e' : msCumulPct >= 50 ? '#f59e0b' : '#ef4444';
+  const statsCumulHtml = msCumulTot > 0 ? `
+    <div style="background:rgba(61,111,255,0.08);border:1px solid rgba(61,111,255,0.2);border-radius:var(--radius-sm);padding:12px 16px;margin-bottom:14px;text-align:center;">
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;">📊 Stats cumulées — ${modeLabel2}</div>
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:800;color:${msCumulColor}">${msCumulPct}%</div>
+      <div style="font-size:12px;color:var(--muted)"><span style="color:#22c55e">${msCumul.correct}✓</span> · <span style="color:#ef4444">${msCumul.wrong}✗</span> sur ${msCumulTot} réponses</div>
+    </div>` : '';
+  let html=`${statsCumulHtml}<div class="score-card ${cls}"><div class="score-emoji">${emoji}</div><div class="score-num">${score}/${totalQ}</div><div class="score-label">${pct}% de bonnes réponses</div>${segHtml}${wrongNote}<div style="margin-top:12px;padding-top:10px;border-top:1px solid #2a2a3a;font-size:13px;color:#7070a0;">Progression : <strong style="color:#22c55e">${masteredAfter}</strong>/<strong style="color:#e8e8f0">${TOTAL}</strong> maîtrisées (<strong style="color:#5b8aff">${masteredPct}%</strong>)</div><div class="score-msg">${msg}</div></div><div class="results-list">`;
   items.forEach((item,i)=>{
     const hasPanneau=item.q.panneau&&PANNEAUX[item.q.panneau];
     html+=`<div class="result-item ${item.ok?'correct':'wrong'}" style="animation-delay:${i*0.07}s"><div class="ri-header"><span class="ri-num">Q${i+1}·F${item.q.f}</span><span class="ri-q">${item.q.q}</span><span class="ri-icon">${item.ok?'✓':'✗'}</span></div>${hasPanneau?`<div class="ri-panneau">${PANNEAUX[item.q.panneau]}</div>`:''}<div class="ri-answers">${!item.ok?`<div class="ri-your">Ta réponse : ${item.ans||'(vide)'}</div>`:''}<div class="ri-correct">✓ Bonne réponse : ${item.q.correct}</div></div></div>`;
   });
-  html+=`</div><button class="btn-restart" onclick="startQuiz()">🔄 Nouveau quiz</button><button class="btn-home" onclick="goHome()">← Retour à l'accueil</button>`;
+  // Stats du mode actuel
+  const modeStatsCurrent = (loadStats().modeStats || {})[currentMode] || { correct: 0, wrong: 0 };
+  const modeTotal = modeStatsCurrent.correct + modeStatsCurrent.wrong;
+  const modePct = modeTotal > 0 ? Math.round(modeStatsCurrent.correct / modeTotal * 100) : 0;
+  const modeLabel = { all: 'Tout mélangé', permisd: 'Permis D', memo: 'Mémo CTCR', failed: 'Questions ratées', revision: 'Révision' }[currentMode] || currentMode;
+  html+=`</div>
+  <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px 16px;margin-bottom:12px;">
+    <div style="font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;">📊 Stats cumulées — ${modeLabel}</div>
+    <div style="font-size:22px;font-weight:800;font-family:'Barlow Condensed',sans-serif;color:${modePct>=80?'#22c55e':modePct>=50?'#f59e0b':'#ef4444'}">${modePct}%</div>
+    <div style="font-size:12px;color:var(--muted)">${modeStatsCurrent.correct} bonnes · ${modeStatsCurrent.wrong} mauvaises sur ${modeTotal} réponses</div>
+  </div>
+  <button class="btn-restart" onclick="startQuiz()">🔄 Nouveau quiz</button><button class="btn-home" onclick="goHome()">← Retour à l'accueil</button>`;
   rs.innerHTML=html;
   window.scrollTo(0,0);
 }
@@ -2380,7 +3024,9 @@ const ORAL_FICHES = [
 let oralFiches = [];
 let oralCurrent = 0;
 let oralRevealed = false;
-let oralResults = {};
+let oralResults = {};      // { ficheId: true|false }
+let oralSavedInputs = {};  // { ficheId: inputValues }
+let oralSavedScores = {};  // { ficheId: { scorePct, foundBullets, totalBullets } }
 
 function loadOralStats() {
   try {
@@ -2393,6 +3039,11 @@ function saveOralStats(stats) {
 }
 
 function startOral() {
+  // Si un état oral sauvegardé existe, proposer de reprendre
+  if (savedOralState) {
+    showResumeOralModal();
+    return;
+  }
   const stats = loadOralStats();
   const failedLast = stats.failedLast || [];
 
@@ -2405,6 +3056,8 @@ function startOral() {
   oralCurrent = 0;
   oralRevealed = false;
   oralResults = {};
+  oralSavedInputs = {};
+  oralSavedScores = {};
 
   document.getElementById('home-screen').style.display = 'none';
   document.getElementById('quiz-screen').style.display = 'none';
@@ -2437,6 +3090,11 @@ function buildFicheInputHTML(fiche) {
     html += `<div class="oral-section">`;
     if (sec.title) html += `<div class="oral-section-title">📌 ${sec.title}</div>`;
     sec.subsections.forEach((sub, subi) => {
+      // Les sous-sections avec bullets vides = juste des titres/labels, pas de textarea
+      if (sub.bullets.length === 0) {
+        if (sub.name) html += `<div class="oral-subsection-title">${sub.name}</div>`;
+        return;
+      }
       if (sub.name) html += `<div class="oral-subsection-title">${sub.name}</div>`;
       const count = sub.bullets.length;
       const placeholder = count === 1 ? '• ...' : Array.from({length: count}, (_,i) => `• ${i+1}. ...`).join('\n');
@@ -2455,13 +3113,16 @@ function buildFicheCorrectHTML(fiche, inputValues) {
     html += `<div class="oral-section">`;
     if (sec.title) html += `<div class="oral-section-title">📌 ${sec.title}</div>`;
     sec.subsections.forEach((sub, subi) => {
+      if (sub.bullets.length === 0) {
+        if (sub.name) html += `<div class="oral-subsection-title">${sub.name}</div>`;
+        return;
+      }
       if (sub.name) html += `<div class="oral-subsection-title">${sub.name}</div>`;
       const userText = (inputValues[si] && inputValues[si][subi]) ? inputValues[si][subi].toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'') : '';
       html += `<ul class="oral-bullets">`;
       sub.bullets.forEach(b => {
         const bNorm = b.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
-        // Vérifier si l'utilisateur a mentionné les mots clés importants (3+ lettres, hors articles)
-        const keyWords = bNorm.split(/\W+/).filter(w => w.length > 3 && !['avec','pour','dans','vers','lors','dont','cette','comme','plus','sans','mais','donc','aussi','tout','tous','bien','peut','doit','être','avoir','les','des','une','qui','que','par','sur','les'].includes(w));
+        const keyWords = bNorm.split(/\W+/).filter(w => w.length > 3 && !['avec','pour','dans','vers','lors','dont','cette','comme','plus','sans','mais','donc','aussi','tout','tous','bien','peut','doit','etre','avoir','les','des','une','qui','que','par','sur'].includes(w));
         const found = keyWords.length === 0 || keyWords.filter(w => userText.includes(w)).length >= Math.ceil(keyWords.length * 0.5);
         const col = userText ? (found ? 'color:#22c55e' : 'color:#ef4444') : 'color:var(--text)';
         const icon = userText ? (found ? '✓ ' : '✗ ') : '';
@@ -2523,16 +3184,40 @@ function revealOral() {
     inputValues[si][subi] = ta.value.trim();
   });
 
+  // Calculer le pourcentage de la fiche
+  let totalBullets = 0, foundBullets = 0;
+  fiche.sections.forEach((sec, si) => {
+    sec.subsections.forEach((sub, subi) => {
+      if (sub.bullets.length === 0) return;
+      const userText = (inputValues[si] && inputValues[si][subi]) ? inputValues[si][subi].toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'') : '';
+      sub.bullets.forEach(b => {
+        totalBullets++;
+        const bNorm = b.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+        const keyWords = bNorm.split(/\W+/).filter(w => w.length > 3 && !['avec','pour','dans','vers','lors','dont','cette','comme','plus','sans','mais','donc','aussi','tout','tous','bien','peut','doit','etre','avoir','les','des','une','qui','que','par','sur'].includes(w));
+        if (keyWords.length === 0) { if (userText) foundBullets++; }
+        else if (keyWords.filter(w => userText.includes(w)).length >= Math.ceil(keyWords.length * 0.5)) foundBullets++;
+      });
+    });
+  });
+  const scorePct = totalBullets > 0 ? Math.round(foundBullets / totalBullets * 100) : 0;
+  const scoreColor = scorePct >= 80 ? '#22c55e' : scorePct >= 50 ? '#f59e0b' : '#ef4444';
+
+  // Sauvegarder les réponses et le score pour le retour en arrière
+  oralSavedInputs[fiche.id] = JSON.parse(JSON.stringify(inputValues));
+  oralSavedScores[fiche.id] = { scorePct, foundBullets, totalBullets };
+
   const area = document.getElementById('oral-card-area');
   area.innerHTML = `
     ${buildFicheCorrectHTML(fiche, inputValues)}
     <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:14px 16px;margin-top:12px;">
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:800;color:${scoreColor};text-align:center;margin-bottom:6px;">${scorePct}% <span style="font-size:13px;font-weight:600;color:var(--muted)">(${foundBullets}/${totalBullets} points)</span></div>
       <div style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;">✓ Vert = mentionné · ✗ Rouge = oublié · Blanc = non renseigné</div>
       <div style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:var(--muted);margin:10px 0 10px;">Tu as bien récité cette fiche ?</div>
       <div class="oral-self-eval">
         <button class="oral-eval-btn fail" onclick="oralEval(false)">✗ Pas encore</button>
         <button class="oral-eval-btn ok" onclick="oralEval(true)">✓ Oui, maîtrisé !</button>
       </div>
+      <button style="width:100%;margin-top:10px;padding:11px;background:transparent;color:var(--accent2);border:1px solid var(--border);border-radius:var(--radius-sm);font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;cursor:pointer;" onclick="restartCurrentFiche()">🔄 Recommencer cette fiche</button>
     </div>
   `;
 
@@ -2558,8 +3243,94 @@ function oralEval(ok) {
   }
 }
 
+function restartCurrentFiche() {
+  // Appelé depuis le bouton APRÈS révélation (pas encore de résultat enregistré)
+  oralRevealed = false;
+  renderOral();
+}
+
+function restartCurrentFicheConfirm() {
+  // Appelé depuis une fiche déjà évaluée (retour en arrière)
+  const modal = document.createElement('div');
+  modal.className = 'modal-overlay';
+  modal.id = 'restart-fiche-modal';
+  const fiche = oralFiches[oralCurrent];
+  modal.innerHTML = `
+    <div class="modal-box">
+      <h3>🔄 Recommencer cette fiche ?</h3>
+      <p>Le résultat enregistré pour <strong>${fiche.num} — ${fiche.title}</strong> sera effacé.</p>
+      <div class="modal-actions">
+        <button class="modal-btn secondary" onclick="document.getElementById('restart-fiche-modal').remove()">✕ Annuler</button>
+        <button class="modal-btn primary" onclick="doRestartCurrentFiche()">✓ Oui, recommencer</button>
+      </div>
+    </div>`;
+  document.body.appendChild(modal);
+}
+
+function doRestartCurrentFiche() {
+  const m = document.getElementById('restart-fiche-modal');
+  if (m) m.remove();
+  const fiche = oralFiches[oralCurrent];
+  delete oralResults[fiche.id];
+  delete oralSavedInputs[fiche.id];
+  delete oralSavedScores[fiche.id];
+  oralRevealed = false;
+  renderOral();
+}
+
 function oralBack() {
-  if (oralCurrent > 0) { oralCurrent--; renderOral(); }
+  if (oralCurrent > 0) {
+    oralCurrent--;
+    renderOralWithResult();
+  }
+}
+
+// Affiche la fiche avec son résultat déjà sauvegardé (si révélé)
+function renderOralWithResult() {
+  const fiche = oralFiches[oralCurrent];
+  const alreadyEvaluated = oralResults[fiche.id] !== undefined;
+  if (alreadyEvaluated) {
+    renderOralRevealed(fiche);
+  } else {
+    renderOral();
+  }
+}
+
+// Affiche le corrigé d'une fiche déjà évaluée (retour en arrière) avec toutes les réponses
+function renderOralRevealed(fiche) {
+  const total = oralFiches.length;
+  document.getElementById('oral-current').textContent = oralCurrent + 1;
+  document.getElementById('oral-total').textContent = total;
+  document.getElementById('oral-progress-fill').style.width = ((oralCurrent / total) * 100) + '%';
+  renderOralGraph();
+  document.getElementById('oral-btn-back').disabled = oralCurrent === 0;
+
+  const ok = oralResults[fiche.id];
+  const resultColor = ok === true ? '#22c55e' : '#ef4444';
+  const resultIcon = ok === true ? '✅ Maîtrisée' : '❌ À reprendre';
+
+  // Récupérer les réponses sauvegardées
+  const savedInputs = oralSavedInputs[fiche.id] || {};
+  const savedScore = oralSavedScores[fiche.id] || { scorePct: 0, foundBullets: 0, totalBullets: 0 };
+  const { scorePct, foundBullets, totalBullets } = savedScore;
+  const scoreColor = scorePct >= 80 ? '#22c55e' : scorePct >= 50 ? '#f59e0b' : '#ef4444';
+
+  const area = document.getElementById('oral-card-area');
+  area.innerHTML = `
+    <div style="background:${ok?'var(--green-bg)':'var(--red-bg)'};border:1px solid ${ok?'var(--green-border)':'var(--red-border)'};border-radius:var(--radius-sm);padding:10px 14px;margin-bottom:10px;display:flex;align-items:center;gap:8px;">
+      <span style="font-size:16px;">${ok?'✅':'❌'}</span>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;color:${resultColor}">${resultIcon} — Fiche déjà évaluée</span>
+    </div>
+    ${buildFicheCorrectHTML(fiche, savedInputs)}
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:14px 16px;margin-top:12px;">
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:800;color:${scoreColor};text-align:center;margin-bottom:6px;">${scorePct}% <span style="font-size:13px;font-weight:600;color:var(--muted)">(${foundBullets}/${totalBullets} points)</span></div>
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;">✓ Vert = mentionné · ✗ Rouge = oublié · Blanc = non renseigné</div>
+      <button style="width:100%;padding:11px;background:transparent;color:var(--accent2);border:1px solid var(--border);border-radius:var(--radius-sm);font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;cursor:pointer;" onclick="restartCurrentFicheConfirm()">🔄 Recommencer cette fiche</button>
+    </div>`;
+
+  const btnNext = document.getElementById('oral-btn-next');
+  btnNext.textContent = 'Fiche suivante →';
+  btnNext.onclick = () => { oralCurrent++; if (oralCurrent >= oralFiches.length) showOralResults(); else renderOral(); };
 }
 
 function oralNext() { } // géré dynamiquement
@@ -2574,6 +3345,7 @@ function showOralResults() {
   const failedIds = oralFiches.filter(f => oralResults[f.id] === false).map(f => f.id);
   oralStats.failedLast = failedIds;
   saveOralStats(oralStats);
+  savedOralState = null; // Fiches orales terminées, effacer l'état sauvegardé
 
   const total = oralFiches.length;
   const okCount = oralFiches.filter(f => oralResults[f.id] === true).length;
@@ -2610,7 +3382,7 @@ function showOralResults() {
   });
 
   html += `</div>
-    <button class="btn-restart" onclick="startOral()">🔄 Relancer les fiches orales</button>
+    <button class="btn-restart" onclick="goHome()">🔄 Recommencer les fiches orales</button>
     <button class="btn-home" onclick="goHome()">← Retour à l'accueil</button>
   `;
   rs.innerHTML = html;
@@ -2622,13 +3394,38 @@ function goHome() {
     document.getElementById(id).style.display = 'none';
   });
   document.getElementById('home-screen').style.display = 'block';
-  updateHomeStats();
+  // Init aide-mémoire : si class "show", afficher
+document.querySelectorAll('.memo-body.show').forEach(el => {
+  el.style.display = 'block';
+  const title = el.previousElementSibling;
+  if (title) {
+    const arr = title.querySelector('.arr');
+    if (arr) arr.textContent = '▲';
+  }
+});
+updateHomeStats();
   window.scrollTo(0,0);
 }
 
+function toggleQuizGraph(cb) {
+  const g = document.getElementById('quiz-graph');
+  if (g) g.classList.toggle('hidden', !cb.checked);
+}
+function toggleOralGraph(cb) {
+  const g = document.getElementById('oral-graph');
+  if (g) g.classList.toggle('hidden', !cb.checked);
+}
 function toggleMemo(el) {
-  el.classList.toggle('open');
-  el.nextElementSibling.classList.toggle('show');
+  const isOpen = el.classList.contains('open');
+  if (isOpen) {
+    el.classList.remove('open');
+    el.nextElementSibling.style.display = 'none';
+    el.querySelector('.arr').textContent = '▼';
+  } else {
+    el.classList.add('open');
+    el.nextElementSibling.style.display = 'block';
+    el.querySelector('.arr').textContent = '▲';
+  }
 }
 
 // PWA (fin)
@@ -2652,6 +3449,15 @@ const dynStyle = document.createElement('style');
 dynStyle.textContent = `@keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-8px)}40%{transform:translateX(8px)}60%{transform:translateX(-5px)}80%{transform:translateX(5px)}}`;
 document.head.appendChild(dynStyle);
 
+// Init aide-mémoire : si class "show", afficher
+document.querySelectorAll('.memo-body.show').forEach(el => {
+  el.style.display = 'block';
+  const title = el.previousElementSibling;
+  if (title) {
+    const arr = title.querySelector('.arr');
+    if (arr) arr.textContent = '▲';
+  }
+});
 updateHomeStats();
 </script>
 </body>
