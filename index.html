@@ -699,7 +699,7 @@
       <h1>Quiz Permis D</h1>
       <p>CATÉGORIE D — TRANSPORT EN COMMUN</p>
     </div>
-    <div style="margin-left:auto;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.05em;background:rgba(61,111,255,0.15);border:1px solid rgba(61,111,255,0.3);border-radius:6px;padding:4px 10px;color:var(--accent2);">V 31</div>
+    <div style="margin-left:auto;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.05em;background:rgba(61,111,255,0.15);border:1px solid rgba(61,111,255,0.3);border-radius:6px;padding:4px 10px;color:var(--accent2);">V 31b</div>
   </div>
 
   <!-- HOME -->
@@ -1741,7 +1741,7 @@ const TOTAL = ALL_QUESTIONS.length;
 //   quizCount: number
 // ═══════════════════════════════════════════════
 
-const APP_VERSION = 'v31'; // Jamais de reset auto — uniquement pour info // Changer à chaque mise à jour pour reset les stats
+const APP_VERSION = 'v31b'; // Jamais de reset auto — uniquement pour info // Changer à chaque mise à jour pour reset les stats
 
 function loadStats() {
   try {
@@ -3650,11 +3650,11 @@ function showResults() {
   rs.style.display='block';
   let score=0;
   const items = questions.map((q,i)=>{ const ok=isCorrect(answers[i],q.correct,q.id); if(ok)score++; quizResults[i]=ok; return{q,ans:answers[i],ok}; });
+  const totalQ = questions.length;
   recordResults(items.map(item=>({id:item.q.id,correct:item.ok})), currentMode);
   saveQuizToHistory(items, currentMode, score, totalQ); // Sauvegarder dans l'historique
   clearPausedState(currentMode); // Quiz terminé normalement
   clearActiveQuiz();
-  const totalQ = questions.length;
   const pct=Math.round(score/totalQ*100);
   const cls=pct>=80?'great':pct>=60?'ok':'bad';
   const emoji=pct>=80?'🎉':pct>=60?'👍':'📚';
