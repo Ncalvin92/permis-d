@@ -699,7 +699,7 @@
       <h1>Quiz Permis D</h1>
       <p>CATÉGORIE D — TRANSPORT EN COMMUN</p>
     </div>
-    <div style="margin-left:auto;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.05em;background:rgba(61,111,255,0.15);border:1px solid rgba(61,111,255,0.3);border-radius:6px;padding:4px 10px;color:var(--accent2);">V 31b</div>
+    <div style="margin-left:auto;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.05em;background:rgba(61,111,255,0.15);border:1px solid rgba(61,111,255,0.3);border-radius:6px;padding:4px 10px;color:var(--accent2);">V 32</div>
   </div>
 
   <!-- HOME -->
@@ -1741,7 +1741,7 @@ const TOTAL = ALL_QUESTIONS.length;
 //   quizCount: number
 // ═══════════════════════════════════════════════
 
-const APP_VERSION = 'v31b'; // Jamais de reset auto — uniquement pour info // Changer à chaque mise à jour pour reset les stats
+const APP_VERSION = 'v32'; // Jamais de reset auto — uniquement pour info // Changer à chaque mise à jour pour reset les stats
 
 function loadStats() {
   try {
@@ -4618,6 +4618,12 @@ function showOralResults() {
         <span class="ri-q">${fiche.title}</span>
         <span style="display:flex;align-items:center;gap:8px;">
           <span style="color:${iconColor};font-weight:700;">${icon}</span>
+          ${(() => {
+            const sc = oralSavedScores[fiche.id];
+            if (!sc || sc.totalBullets === 0) return '';
+            const col = sc.scorePct >= 80 ? '#22c55e' : sc.scorePct >= 50 ? '#f59e0b' : '#ef4444';
+            return '<span style="font-family:Barlow Condensed,sans-serif;font-size:13px;font-weight:800;color:' + col + ';background:rgba(0,0,0,0.25);padding:2px 7px;border-radius:6px;">' + sc.scorePct + '%</span>';
+          })()}
           <span class="oral-acc-arr" style="font-size:10px;color:var(--muted);">▼</span>
         </span>
       </div>
