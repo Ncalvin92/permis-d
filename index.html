@@ -699,7 +699,7 @@
       <h1>Quiz Permis D</h1>
       <p>CATÉGORIE D — TRANSPORT EN COMMUN</p>
     </div>
-    <div style="margin-left:auto;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.05em;background:rgba(61,111,255,0.15);border:1px solid rgba(61,111,255,0.3);border-radius:6px;padding:4px 10px;color:var(--accent2);">V 32</div>
+    <div style="margin-left:auto;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.05em;background:rgba(61,111,255,0.15);border:1px solid rgba(61,111,255,0.3);border-radius:6px;padding:4px 10px;color:var(--accent2);">V 32b</div>
   </div>
 
   <!-- HOME -->
@@ -1741,7 +1741,7 @@ const TOTAL = ALL_QUESTIONS.length;
 //   quizCount: number
 // ═══════════════════════════════════════════════
 
-const APP_VERSION = 'v32'; // Jamais de reset auto — uniquement pour info // Changer à chaque mise à jour pour reset les stats
+const APP_VERSION = 'v32b'; // Jamais de reset auto — uniquement pour info // Changer à chaque mise à jour pour reset les stats
 
 function loadStats() {
   try {
@@ -2957,8 +2957,10 @@ function isCorrect(ans, correct, qId) {
     const fuzzyMatch = cWords.filter(cw => {
       // Mot exact déjà trouvé
       if (aStrip.includes(cw)) return true;
-      // Chercher un mot proche dans les mots de l'utilisateur
-      return aWords.some(aw => levenshtein(cw, aw) <= Math.max(1, Math.floor(cw.length / 5)));
+      // Chiffres : tolérance zéro — doit être exact
+      if (/^\d/.test(cw)) return false;
+      // Chercher un mot proche dans les mots de l'utilisateur (pas de chiffres)
+      return aWords.some(aw => !/^\d/.test(aw) && levenshtein(cw, aw) <= Math.max(1, Math.floor(cw.length / 5)));
     }).length;
     return fuzzyMatch >= Math.ceil(cWords.length * threshold);
   });
@@ -4180,10 +4182,12 @@ function oralTextMatches(userText, bulletText) {
       matched++;
       continue;
     }
-    // Tolérance Levenshtein (fautes d'ortho)
-    const uWords = uNorm.split(' ');
-    if (uWords.some(uw => levenshtein(kw, uw) <= Math.max(1, Math.floor(kw.length / 5)))) {
-      matched++;
+    // Tolérance Levenshtein (fautes d'ortho) — JAMAIS sur les chiffres
+    if (!/^\d/.test(kw)) {
+      const uWords = uNorm.split(' ');
+      if (uWords.some(uw => !/^\d/.test(uw) && levenshtein(kw, uw) <= Math.max(1, Math.floor(kw.length / 5)))) {
+        matched++;
+      }
     }
   }
   // Seuil : 50% des mots-clés suffisent (souple pour paraphrase naturelle)
