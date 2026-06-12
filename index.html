@@ -689,6 +689,63 @@
   .btn-repeat-vocal:hover { background: var(--bg3); color: var(--text); }
   .btn-repeat-vocal:active { transform: scale(0.96); }
 
+  
+  
+  
+
+  
+  /* ═══ Trous inline RSE-RSF ═══ */
+  .rsf-card { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:14px 16px; margin-bottom:10px; }
+  .rsf-titre { font-family:'Barlow Condensed',sans-serif; font-size:17px; font-weight:800; color:var(--accent2); margin-bottom:3px; }
+  .rsf-sous-titre { font-size:10px; color:var(--muted); margin-bottom:12px; line-height:1.4; }
+  .rsf-section-label { font-family:'Barlow Condensed',sans-serif; font-size:12px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:var(--accent); background:rgba(61,111,255,0.1); border-left:3px solid var(--accent); padding:4px 10px; margin:10px 0 5px; }
+  .rsf-ligne { font-size:13px; color:var(--text); padding:5px 4px; border-bottom:1px solid rgba(255,255,255,0.04); line-height:1.8; }
+  .rsf-ligne:last-child { border-bottom:none; }
+  .rsf-trou { display:inline-block; background:var(--bg2); border:1.5px solid var(--border); border-radius:5px; padding:2px 6px; font-family:'Barlow Condensed',sans-serif; font-size:14px; font-weight:700; color:var(--text); text-align:center; outline:none; vertical-align:middle; min-width:60px; }
+  .rsf-trou:focus { border-color:var(--accent2); background:rgba(61,111,255,0.08); }
+  .rsf-trou.ok  { border-color:#22c55e; background:rgba(34,197,94,0.12); color:#22c55e; }
+  .rsf-trou.err { border-color:#ef4444; background:rgba(239,68,68,0.1); color:#ef4444; }
+  .rsf-corr-val { font-size:11px; color:#22c55e; margin-left:3px; font-style:italic; }
+  .rsf-prog { font-size:11px; color:var(--muted); text-align:right; margin-bottom:6px; }
+  .rsf-score { font-family:'Barlow Condensed',sans-serif; font-size:22px; font-weight:800; text-align:center; padding:10px; border-radius:8px; margin-top:10px; }
+  .rsf-notice { font-size:11px; color:var(--muted); font-style:italic; padding:3px 4px; }
+
+  
+  /* ═══ QCU ═══ */
+  .btn-grid-qcu { display: flex; flex-direction: column; gap: 8px; }
+  .qcu-btn {
+    padding: 12px 14px; border-radius: var(--radius-sm);
+    border: 1.5px solid var(--border); background: var(--bg3);
+    color: var(--text); font-family: 'Barlow Condensed', sans-serif;
+    font-size: 16px; font-weight: 600; cursor: pointer;
+    text-align: left; display: flex; align-items: flex-start; gap: 10px;
+    transition: all 0.18s; line-height: 1.4;
+  }
+  .qcu-btn:hover { border-color: var(--accent2); background: rgba(61,111,255,0.08); }
+  .qcu-btn.selected { border-color: var(--accent2); background: rgba(61,111,255,0.15); }
+  .qcu-btn.correct-ans { border-color: #22c55e; background: rgba(34,197,94,0.15); color: #22c55e; }
+  .qcu-btn.wrong-ans { border-color: #ef4444; background: rgba(239,68,68,0.12); color: #ef4444; }
+  .qcu-letter { font-size: 13px; font-weight: 800; color: var(--accent2);
+    min-width: 20px; padding-top: 1px; }
+
+  
+  .btn-grid-qcu { display:flex; flex-direction:column; gap:8px; }
+  .qcu-btn { padding:12px 14px; border-radius:var(--radius-sm); border:1.5px solid var(--border); background:var(--bg3); color:var(--text); font-family:'Barlow Condensed',sans-serif; font-size:16px; font-weight:600; cursor:pointer; text-align:left; display:flex; align-items:flex-start; gap:10px; transition:all 0.18s; line-height:1.4; }
+  .qcu-btn:hover { border-color:var(--accent2); background:rgba(61,111,255,0.08); }
+  .qcu-btn.selected { border-color:var(--accent2); background:rgba(61,111,255,0.15); }
+  .qcu-btn.correct-ans { border-color:#22c55e; background:rgba(34,197,94,0.15); color:#22c55e; }
+  .qcu-btn.wrong-ans { border-color:#ef4444; background:rgba(239,68,68,0.12); color:#ef4444; }
+  .qcu-letter { font-size:13px; font-weight:800; color:var(--accent2); min-width:20px; padding-top:1px; }
+  .picto-display { display:flex; justify-content:center; align-items:center; background:var(--bg3); border:2px solid var(--border); border-radius:12px; padding:28px; margin-bottom:16px; }
+  .picto-display svg { color:var(--text); transform:scale(2.2); }
+
+  
+  .btn-grid-qcu{display:flex;flex-direction:column;gap:8px;}
+  .qcu-btn{padding:12px 14px;border-radius:var(--radius-sm);border:1.5px solid var(--border);background:var(--bg3);color:var(--text);font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:600;cursor:pointer;text-align:left;display:flex;align-items:flex-start;gap:10px;transition:all 0.18s;line-height:1.4;}
+  .qcu-btn:hover{border-color:var(--accent2);background:rgba(61,111,255,0.08);}
+  .qcu-btn.selected{border-color:var(--accent2);background:rgba(61,111,255,0.15);}
+  .qcu-letter{font-size:13px;font-weight:800;color:var(--accent2);min-width:20px;}
+
   </style>
 </head>
 <body>
@@ -699,7 +756,7 @@
       <h1>Quiz Permis D</h1>
       <p>CATÉGORIE D — TRANSPORT EN COMMUN</p>
     </div>
-    <div style="margin-left:auto;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.05em;background:rgba(61,111,255,0.15);border:1px solid rgba(61,111,255,0.3);border-radius:6px;padding:4px 10px;color:var(--accent2);">V 32b</div>
+    <div style="margin-left:auto;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.05em;background:rgba(61,111,255,0.15);border:1px solid rgba(61,111,255,0.3);border-radius:6px;padding:4px 10px;color:var(--accent2);">V 37i</div>
   </div>
 
   <!-- HOME -->
@@ -785,6 +842,16 @@
         <span style="font-size:10px;font-weight:400;text-transform:none;letter-spacing:0">Mode récitation</span><br>
         <span id="modestats-oral" style="font-size:11px;color:#22c55e;font-weight:700">—</span>
       </button>
+      <button class="mode-btn" id="mode-rsersf" onclick="setMode('rsersf')">
+        <span class="mode-icon">📜</span>RSE — RSF<br>
+        <span style="font-size:10px;font-weight:400;text-transform:none;letter-spacing:0">66 questions</span><br>
+        <span id="modestats-rsersf" style="font-size:11px;color:#22c55e;font-weight:700">—</span>
+      </button>
+      <button class="mode-btn" id="mode-ctcr" onclick="setMode('ctcr')">
+        <span class="mode-icon">🚌</span>QCU CTCR<br>
+        <span style="font-size:10px;font-weight:400;text-transform:none;letter-spacing:0">116 questions</span><br>
+        <span id="modestats-ctcr" style="font-size:11px;color:#22c55e;font-weight:700">—</span>
+      </button>
       <button class="mode-btn" id="mode-failed" onclick="setMode('failed')">
         <span class="mode-icon">⚡</span>Questions ratées<br>
         <span style="font-size:10px;font-weight:400;text-transform:none;letter-spacing:0"><span id="mode-failed-count">0</span> questions</span><br>
@@ -807,6 +874,8 @@
         <button onclick="resetModeStats('memo')" style="padding:7px;background:transparent;color:var(--muted);border:1px solid var(--border);border-radius:var(--radius-sm);font-size:11px;cursor:pointer;">📋 Mémo CTCR</button>
         <button onclick="resetModeStats('oral')" style="padding:7px;background:transparent;color:var(--muted);border:1px solid var(--border);border-radius:var(--radius-sm);font-size:11px;cursor:pointer;">🎤 Fiches Orales</button>
         <button onclick="resetModeStats('revision')" style="padding:7px;background:transparent;color:var(--muted);border:1px solid var(--border);border-radius:var(--radius-sm);font-size:11px;cursor:pointer;">📖 Révision</button>
+        <button onclick="resetModeStats('rsersf')" style="padding:7px;background:transparent;color:var(--muted);border:1px solid var(--border);border-radius:var(--radius-sm);font-size:11px;cursor:pointer;">📜 RSE — RSF</button>
+        <button onclick="resetModeStats('ctcr')" style="padding:7px;background:transparent;color:var(--muted);border:1px solid var(--border);border-radius:var(--radius-sm);font-size:11px;cursor:pointer;">🚌 QCU CTCR</button>
       </div>
     </div>
 
@@ -1227,6 +1296,11 @@ const PANNEAUX = {
 // ═══════════════════════════════════════════════
 // TOUTES LES QUESTIONS (avec id unique)
 // ═══════════════════════════════════════════════
+
+// ═══════════════════════════════════════════════
+// PICTOGRAMMES TACHYGRAPHE — SVG
+// ═══════════════════════════════════════════════
+
 const ALL_QUESTIONS = [
   // FICHE 1
   {id:"f1q1",f:1,n:1,q:"Un chiffre doublé (ex : 33) dans le rectangle du haut de la plaque orange placée à l'arrière d'un camion signifie : \"produit de nature à polluer les eaux\".",panneau:"plaque_orange_double",type:"vf",correct:"Faux"},
@@ -1725,7 +1799,232 @@ const ALL_QUESTIONS = [
   {id:"memo_synth_q7",f:"MÉMO",n:63,q:"Quelle est la durée totale minimale d'un repos journalier FRACTIONNÉ (3h + 9h) ?",type:"open",correct:"12h"},
   {id:"memo_synth_q8",f:"MÉMO",n:64,q:"Un autocar de 3 essieux articulé peut-il mesurer jusqu'à 18,75 m ?",type:"vf",correct:"Vrai"},
   {id:"memo_synth_q9",f:"MÉMO",n:65,q:"Le PTAC d'un véhicule à 2 essieux est de 19T. Peut-il avoir un PTAC de 20T avec un ralentisseur de 600 kg ?",type:"oun",correct:"Non"},
-  {id:"memo_synth_q10",f:"MÉMO",n:66,q:"Si j'ai conduit 40h la semaine précédente, combien d'heures maximum puis-je conduire la semaine suivante ?",type:"open",correct:"50h"}
+  {id:"memo_synth_q10",f:"MÉMO",n:66,q:"Si j'ai conduit 40h la semaine précédente, combien d'heures maximum puis-je conduire la semaine suivante ?",type:"open",correct:"50h"},
+
+  // ══════════════════════════════════════════════════════
+  // RSE-RSF — 3 questions de type "tableau" (une fiche = une page entière)
+  // ══════════════════════════════════════════════════════
+
+  {id:"rsersf_t1",f:"RSE-RSF",n:1,type:"trous",
+   titre:"Réglementation sociale européenne et française.",
+   sous_titre:"Règlement européen n° 561/2006 applicable depuis le 11 avril 2007",
+   sections:[
+     {label:"Temps de conduite (maxi)",lignes:[
+       {t:"Continue : {0}.",r:["4h30"]},
+       {t:"Droit français : Conduite de nuit de {0} à {1} : {2} maxi.",r:["21h","6h","4h"]},
+       {t:"Règlement {0}/{1} : (entre {2} et {3}) : Depuis le {4} : {5} si le conducteur est seul à bord du véhicule, si au moins présent {6} dans un autre pays que celui du point de départ, si le conducteur repousse son repos hebdomadaire jusqu'à {7} périodes consécutives : (dérogation dans le cadre d'un service de transport international occasionnel).",r:["1073","2009","22h","6h","01/01/2014","3h","24h","12"]},
+       {t:"Journalière : {0} (possibilité jusqu'à {1}/{2} fois par semaine).",r:["9h","10h","2"]},
+       {t:"Hebdomadaire : {0}.",r:["56h"]},
+       {t:"Bi-hebdomadaire : {0}.",r:["90h"]}
+     ]},
+     {label:"Temps de pause et de repos (mini)",lignes:[
+       {t:"Pause continue : {0}.",r:["45 mn"]},
+       {t:"Pause fractionnée : {0} + {1}.",r:["15 mn","30 mn"]},
+       {t:"Repos journalier normal : {0} consécutives.",r:["11h"]},
+       {t:"Repos journalier normal fractionné : {0} + {1}.",r:["3h","9h"]},
+       {t:"Repos journalier normal en équipage : {0} sur une période de {1}.",r:["9h","30 h"]},
+       {t:"Repos journalier réduit : de {0} à {1}mn, {2} fois entre {3} repos hebdomadaires. (pas de récupération prévue par le règlement).",r:["9h","10h59","3","2"]},
+       {t:"Repos hebdomadaire normal : {0}.",r:["45h"]},
+       {t:"Repos hebdomadaire réduit : {0} à {1} mn. (récupération dans les {2} semaines, en un seul « bloc », sur un repos d'au moins {3}).",r:["24h","44h59","3","9h"]},
+       {t:"Interdiction d'effectuer {0} repos hebdomadaires réduits consécutifs.",r:["2"]}
+     ]},
+     {label:"Les amplitudes (droit du travail français)",lignes:[
+       {t:"Transports occasionnels : {0} maximum.",r:["14h"]},
+       {t:"Transport en équipage : {0} maximum.",r:["18h"]}
+     ]}
+   ]
+  },
+  {id:"rsersf_t2",f:"RSE-RSF",n:2,type:"trous",
+   titre:"Durée de travail et de pause dans les entreprises de transport public interurbain de voyageurs",
+   sous_titre:"Décret n° 2003-1242 du 22 décembre 2003 modifié par le décret n° 2006-408 du 6 avril 2006 + Directive 2002/15/CE.",
+   sections:[
+     {label:"Durée de travail",lignes:[
+       {t:"Journalière : {0}.",r:["10h"]},
+       {t:"Journalière : {0}/{1} fois par semaine pour le personnel roulant.",r:["12h","1"]},
+       {t:"Journalière : {0}/{1} fois dans la semaine dans la limite de {2} fois par période de {3} semaines à condition de {4} jours de travail.",r:["12h","2","6","12","5"]},
+       {t:"Hebdomadaire (semaine isolée) : {0}",r:["35h"]},
+       {t:"Hebdomadaire : {0} ou {1} sur {2} semaines.",r:["48h","44h","12"]}
+     ]},
+     {label:"Amplitude journalière",lignes:[
+       {t:"Amplitude journalière : {0}.",r:["13h"]},
+       {t:"{0} en service occasionnel.",r:["14h"]},
+       {t:"{0} en équipage.",r:["18h"]},
+       {t:"Amplitude journalière : {0} si moins de {1} jours de travail hebdomadaire.",r:["13h","5"]}
+     ]},
+     {label:"Temps de pause et de repos (mini)",lignes:[
+       {t:"Pause continue : {0}/entre {1} et {2} de travail.",r:["30 mn","6h","9h"]},
+       {t:"Pause continue : {0} / > {1} de travail.",r:["45 mn","9h"]},
+       {t:"Pause fractionnée : {0} + {1}.",r:["15mn","15mn"]},
+       {t:"Repos journalier : {0} consécutives.",r:["11h"]},
+       {t:"Repos journalier réduit : {0} à {1} consécutives, si nécessité de continuité de service.",r:["10h","10h59"]},
+       {t:"Repos journalier réduit : {0} à {1}, dans le cas d'un établissement pratiquant un travail sur {2} périodes successives de {3}.",r:["9h","10h59","3","8h"]},
+       {t:"Repos hebdomadaire normal : {0}.",r:["35h"]},
+       {t:"Repos hebdomadaire réduit : {0} à {1} mn. (récupération dans les {2} semaines, en un seul « bloc », sur un repos journalier ou hebdomadaire).",r:["24h","34h59","3"]}
+     ]},
+     {label:"Conditions d'amplitude",lignes:[
+       {t:"> {0} jusqu'à {1} : {2} pause continue de {3} ou {4} tranches de {5} chacune minimum.",r:["12h","13h","1","2h30","2","1h30"]},
+       {t:"> {0} : {1}pause continue de {2} ou {3}tranches de {4} minimum.",r:["13h","1","3h","2","2h"]}
+     ]}
+   ]
+  },
+  {id:"rsersf_t3",f:"RSE-RSF",n:3,type:"trous",
+   titre:"Durée de travail dans les entreprises de transport public urbain de voyageurs",
+   sous_titre:"Décret n° 2006-925 du 19 juillet 2006.",
+   sections:[
+     {label:"Temps de travail",lignes:[
+       {t:"Hebdomadaire (semaine isolée) : {0}",r:["35h"]},
+       {t:"Hebdomadaire : {0} ou {1} sur {2} semaines.",r:["42h","46h","12"]}
+     ]},
+     {label:"Amplitude journalière",lignes:[
+       {t:"Amplitude journalière : {0}.",r:["11h"]},
+       {t:"Amplitude journalière : {0} si moins de {1} jours de travail hebdomadaire.",r:["13h","5"]}
+     ]},
+     {label:"Temps de pause et de repos (mini)",lignes:[
+       {t:"Pause continue : {0} / {1} de travail.",r:["20 mn","6h"]},
+       {t:"Pause fractionnée : {0}.",r:["5mn"]},
+       {t:"Pause repas (entre {0} et {1}) : {2}",r:["11h30","14h","45mn"]},
+       {t:"Repos journalier : {0} consécutives.",r:["11h"]},
+       {t:"Repos journalier réduit : {0} à {1} consécutives, si nécessité de continuité de service.",r:["10h","10h59"]},
+       {t:"Repos journalier réduit : {0} à {1}, dans le cas d'un établissement pratiquant un travail sur {2} périodes successives de {3}.",r:["9h","10h59","3","8h"]},
+       {t:"Repos hebdomadaire normal : {0}.",r:["35h"]},
+       {t:"Repos hebdomadaire réduit : {0} à {1} mn. (récupération dans les {2} semaines, en un seul « bloc », sur un repos journalier ou hebdomadaires).",r:["24h","34h59","3"]}
+     ]}
+   ]
+  },
+
+  // ── QCU CTCR — 116 questions ──
+
+  // THÈME 1 : Transport routier de voyageurs
+  {id:"ctcr_001",f:"CTCR",n:1,type:"qcu",q:"Dans le transport routier de voyageurs, le repos journalier peut être fractionné en :",A:"2h00 + 4h00 + 6h00",B:"3h00 + 9h00",C:"3h00 + 8h00",D:"9h00 + 3h00",correct:"B"},
+  {id:"ctcr_002",f:"CTCR",n:2,type:"qcu",q:"Sont considérés comme des transports d'enfants :",A:"Uniquement les transports scolaires",B:"Les transports comportant au moins une personne de -18 ans",C:"Les transports de tout type, mais dont la majorité des personnes transportées ont moins de 18 ans",D:"Les transports de personnes de moins de 12 ans",correct:"C"},
+  {id:"ctcr_003",f:"CTCR",n:3,type:"qcu",q:"Rédiger un billet collectif est obligatoire pour :",A:"effectuer un service scolaire",B:"convoyer un groupe de touristes de l'hôtel à l'aéroport",C:"effectuer un service de lignes urbaines",D:"effectuer un service de lignes interurbaines",correct:"B"},
+  {id:"ctcr_004",f:"CTCR",n:4,type:"qcu",q:"Dans le cadre d'un service à la demande, quelle condition permet de déroger à la limite d'amplitude de 12 heures ?",A:"si le temps de travail effectif n'excède pas 10h",B:"si le temps de travail effectif n'excède pas 9h",C:"si le service comporte au moins une pause continue d'1h",D:"il n'y a pas de conditions particulières",correct:"B"},
+  {id:"ctcr_005",f:"CTCR",n:5,type:"qcu",q:"Quelle entité est autorité organisatrice en transport scolaire ?",A:"l'entreprise de transport",B:"l'inspection académique",C:"le conseil régional",D:"le responsable de l'établissement scolaire",correct:"C"},
+  {id:"ctcr_006",f:"CTCR",n:6,type:"qcu",q:"En double équipage, le temps passé par le 2e conducteur dans un véhicule en marche doit être :",A:"comptabilisé en TTE à 100%",B:"comptabilisé en TTE à 50%",C:"rémunéré à 50%",D:"enregistré sur la position repos du tachygraphe",correct:"B"},
+  {id:"ctcr_007",f:"CTCR",n:7,type:"qcu",q:"Quelle est la durée maximale de conduite continue, de nuit, dans le transport routier de voyageurs ?",A:"3h30",B:"4h00",C:"4h30",D:"9h00",correct:"A"},
+  {id:"ctcr_008",f:"CTCR",n:8,type:"qcu",q:"En service occasionnel en double équipage, quelle est la limite de l'amplitude ?",A:"12h",B:"14h",C:"16h",D:"18h",correct:"D"},
+  {id:"ctcr_009",f:"CTCR",n:9,type:"qcu",q:"Combien de jours de repos minimum doit prendre un conducteur dans le cas d'une organisation de travail « par quatorzaine » ?",A:"2 jours",B:"3 jours",C:"4 jours",D:"5 jours",correct:"B"},
+  {id:"ctcr_010",f:"CTCR",n:10,type:"qcu",q:"Qu'est-ce qu'un transport parascolaire ?",A:"un transport d'enfants dont l'âge dépasse 10 ans",B:"un transport d'enfants vers une station de ski pour une classe de neige",C:"un transport d'enfants de l'établissement scolaire à la piscine pendant les heures de classe",D:"un transport exclusif d'enfants à mobilité réduite",correct:"B"},
+  {id:"ctcr_011",f:"CTCR",n:11,type:"qcu",q:"Quelle mention obligatoire figure-t-elle sur un billet collectif ?",A:"la capacité de l'autocar",B:"le nombre de bagages par passager",C:"l'identité de chaque passager",D:"l'identité de l'entreprise",correct:"D"},
+  {id:"ctcr_012",f:"CTCR",n:12,type:"qcu",q:"Combien de billet(s) collectif(s) doit avoir à bord un conducteur lors d'un voyage de 6 jours ?",A:"6 en tout",B:"4 pour la France + 2 pour l'étranger",C:"1 pour la France + 1 pour l'étranger",D:"1 seul",correct:"D"},
+  {id:"ctcr_013",f:"CTCR",n:13,type:"qcu",q:"Que veut dire CPS ?",A:"Contrat en période scolaire",B:"Conducteur en prestation de service",C:"Conducteur en prise de service",D:"Contrat parascolaire",correct:"A"},
+  {id:"ctcr_014",f:"CTCR",n:14,type:"qcu",q:"En province, les services réguliers de transport routier de personnes sont des services :",A:"Réservés à des catégories particulières d'usagers, avec retour obligatoire au point de départ",B:"Offerts à la place, dont l'itinéraire, les points d'arrêts, les fréquences, les horaires et tarifs sont fixées et publiés par avance",C:"Pouvant être collectifs",D:"Pouvant être à la demande",correct:"B"},
+  {id:"ctcr_015",f:"CTCR",n:15,type:"qcu",q:"En double équipage, quelle est la durée minimale du repos journalier ?",A:"9 heures continues sur une période de 24 heures",B:"11 heures continues sur une période de 24 heures",C:"9 heures continues sur une période de 30 heures",D:"11 heures continues sur une période de 30 heures",correct:"C"},
+
+  // THÈME 2 : Transport urbain de voyageurs
+  {id:"ctcr_016",f:"CTCR",n:16,type:"qcu",q:"Le temps de pause continu en transport urbain de voyageur est de :",A:"45 minutes pour 4h30 de conduite",B:"45 minutes pour 4h30 de travail",C:"20 minutes pour 6h00 de conduite",D:"20 minutes pour 6h00 de travail",correct:"D"},
+  {id:"ctcr_017",f:"CTCR",n:17,type:"qcu",q:"En règle générale, dans le transport urbain de voyageurs si la durée de travail hebdomadaire est organisée sur moins de 5 jours, l'amplitude est de :",A:"10h",B:"11h",C:"12h",D:"13h",correct:"D"},
+  {id:"ctcr_018",f:"CTCR",n:18,type:"qcu",q:"En règle générale, la réglementation sociale dans le transport urbain impose un repos hebdomadaire minimum de :",A:"11 heures consécutives",B:"24 heures consécutives",C:"35 heures consécutives",D:"48 heures consécutives",correct:"A"},
+  {id:"ctcr_019",f:"CTCR",n:19,type:"qcu",q:"Quelle condition permet de prolonger la durée de travail hebdomadaire au-delà de 6 jours consécutifs ?",A:"pour remplacer un salarié absent après avoir informé l'inspection du travail",B:"par simple demande de l'exploitant",C:"en fonction des besoins de service",D:"il n'y a pas de dérogation possible à la limite des 6 jours",correct:"A"},
+  {id:"ctcr_020",f:"CTCR",n:20,type:"qcu",q:"Une personne attend à un arrêt qui dessert plusieurs lignes :",A:"s'il vous fait signe, vous continuez votre course",B:"s'il vous fait signe, vous vous arrêtez",C:"s'il ne fait aucun signe, vous vous arrêtez et l'invitez à monter sans lui demander sa destination",D:"s'il ne fait aucun signe, vous vous arrêtez et lui demandez sa destination",correct:"B"},
+  {id:"ctcr_021",f:"CTCR",n:21,type:"qcu",q:"Quel comportement doit adopter le conducteur lors de la prise en charge d'un passager à un arrêt ?",A:"démarrer aussitôt pour optimiser la vitesse commerciale",B:"attendre l'installation du passager puis démarrer",C:"mettre le clignotant droit pour quitter l'arrêt",D:"contrôler le rétroviseur droit avant de quitter l'arrêt",correct:"B"},
+  {id:"ctcr_022",f:"CTCR",n:22,type:"qcu",q:"En règle générale, l'amplitude maximale en service urbain est de :",A:"9h00",B:"10h00",C:"11h00",D:"12h00",correct:"C"},
+  {id:"ctcr_023",f:"CTCR",n:23,type:"qcu",q:"Pour faciliter le flux de passagers lors d'un arrêt d'autobus, il est préférable de descendre :",A:"par n'importe quelle porte",B:"par la porte avant",C:"par la porte arrière",D:"par la porte avant ou arrière suivant les arrêts",correct:"C"},
+  {id:"ctcr_024",f:"CTCR",n:24,type:"qcu",q:"Dans un autobus, la position en sécurité d'une personne en fauteuil roulant est :",A:"Face à la route",B:"Dos à la route",C:"Face à la porte arrière",D:"Dos à la porte arrière",correct:"B"},
+  {id:"ctcr_025",f:"CTCR",n:25,type:"qcu",q:"Comment se nomme le titre de transport en service régulier urbain ?",A:"le billet collectif",B:"la liste des passagers",C:"le billet individuel",D:"l'attestation d'aménagement",correct:"C"},
+  {id:"ctcr_026",f:"CTCR",n:26,type:"qcu",q:"Le transport en commun de personnes debout :",A:"est autorisé dans le cadre d'un service régulier en agglomération",B:"est autorisé sur tous types de services réguliers",C:"est uniquement autorisé lorsque le véhicule est équipé de l'ABS",D:"est strictement interdit",correct:"A"},
+  {id:"ctcr_027",f:"CTCR",n:27,type:"qcu",q:"En règle générale, dans le transport urbain de voyageurs l'amplitude est de :",A:"10h00",B:"11h00",C:"12h00",D:"13h00",correct:"B"},
+  {id:"ctcr_028",f:"CTCR",n:28,type:"qcu",q:"En transport urbain, quel intervalle n'est pas considéré comme du Temps de Travail Effectif ?",A:"une interruption de conduite de 15mn",B:"une interruption de conduite de 2h",C:"le temps de travail",D:"le temps de conduite",correct:"B"},
+  {id:"ctcr_029",f:"CTCR",n:29,type:"qcu",q:"Un véhicule des services réguliers de transport en commun :",A:"est autorisé à circuler dans une voie réservée aux autobus, même s'il n'est pas en service",B:"est systématiquement prioritaire lorsqu'il circule dans une voie réservée au autobus",C:"est le seul véhicule habilité à utiliser une voie réservée aux autobus",D:"doit allumer les feux de position lorsqu'il circule dans une voie réservée aux autobus",correct:"A"},
+  {id:"ctcr_030",f:"CTCR",n:30,type:"qcu",q:"Pour quel type de service un conducteur n'est pas soumis à l'obligation de formation initiale ?",A:"le service urbain",B:"le service occasionnel",C:"la ligne régulière de plus de 50 kilomètres",D:"le service non-commercial de voyageurs",correct:"D"},
+  {id:"ctcr_031",f:"CTCR",n:31,type:"qcu",q:"En service urbain, le temps de travail journalier est en général, limité à :",A:"9h00",B:"10h00",C:"11h00",D:"12h00",correct:"B"},
+  {id:"ctcr_032",f:"CTCR",n:32,type:"qcu",q:"En transport urbain de voyageurs, le roulement correspond :",A:"À la fréquence de passage sur la ligne",B:"À des semaines types de travail pour les conducteurs",C:"Au nombre d'autobus",D:"Au nombre de conducteurs par autobus",correct:"B"},
+
+  // THÈME 3 : Matériels et équipements
+  {id:"ctcr_033",f:"CTCR",n:33,type:"qcu",q:"Pour diffuser un film dans un autocar, il est nécessaire de posséder à bord :",A:"une attestation d'aménagement",B:"Une attestation SACEM",C:"Une licence communautaire",D:"Un billet collectif",correct:"B"},
+  {id:"ctcr_034",f:"CTCR",n:34,type:"qcu",q:"Que veut dire le sigle SAEIV ?",A:"Système d'Analyse de l'Environnement Interurbain des Véhicules",B:"Système d'Aide à l'Enregistrement des Itinéraires des Véhicules",C:"Système d'Aide à l'Exploitation et l'Information des Voyageurs",D:"Système d'Aide à l'Exploitation Interurbaine des Véhicules",correct:"C"},
+  {id:"ctcr_035",f:"CTCR",n:35,type:"qcu",q:"Quel type de girouette n'est quasiment plus utilisé ?",A:"la girouette à pastilles",B:"la girouette à diodes haute définition",C:"la girouette à diodes",D:"la girouette à film",correct:"D"},
+  {id:"ctcr_036",f:"CTCR",n:36,type:"qcu",q:"Sur quel type de service, un conducteur doit-il systématiquement utiliser le pictogramme enfants ?",A:"service scolaire",B:"service urbain s'il y a à bord un enfant de moins de 4 ans",C:"service occasionnel transportant des familles",D:"service interurbain",correct:"A"},
+  {id:"ctcr_037",f:"CTCR",n:37,type:"qcu",q:"Le terme « Personnes à mobilité réduite » désigne :",A:"Seulement les personnes transportant des bagages lourds et/ou encombrants",B:"Seulement les personnes âgées",C:"Seulement les personnes en fauteuil roulant",D:"Toutes les personnes citées ci-dessus",correct:"D"},
+  {id:"ctcr_038",f:"CTCR",n:38,type:"qcu",q:"Lors de la prise en charge d'une personne à mobilité réduite en fauteuil roulant, le conducteur :",A:"place la personne sur la rampe",B:"doit s'assurer que la personne est en mesure de monter seule sur la rampe",C:"doit se dépêcher pour ne pas faire patienter les autres passagers",D:"doit enfoncer le bouton rouge d'alimentation de la rampe",correct:"B"},
+  {id:"ctcr_039",f:"CTCR",n:39,type:"qcu",q:"Le coupe-circuit agit sur le circuit électrique principal à l'exception :",A:"des feux de position et du tachygraphe",B:"des feux de croisement et du tachygraphe",C:"des feux de route et du tachygraphe",D:"des feux de détresse et du tachygraphe",correct:"D"},
+  {id:"ctcr_040",f:"CTCR",n:40,type:"qcu",q:"L'attestation d'aménagement d'un autocar :",A:"doit rester au siège de l'entreprise",B:"doit être à bord du véhicule en original",C:"doit être à bord du véhicule en copie certifiée conforme",D:"est remplacée par le certificat d'immatriculation",correct:"B"},
+  {id:"ctcr_041",f:"CTCR",n:41,type:"qcu",q:"Lors d'un transport en hiver à destination d'une station de ski à 2500m d'altitude, le lot de bord du véhicule doit être complété :",A:"d'un sac de sable",B:"d'une pelle de déneigement",C:"de chaînes à neige",D:"d'un gyrophare de couleur orange",correct:"C"},
+  {id:"ctcr_042",f:"CTCR",n:42,type:"qcu",q:"L'écoconduite consiste à :",A:"consommer le moins de carburant possible",B:"utiliser rationnellement le véhicule",C:"rouler doucement",D:"tenter de gagner du temps sur la route",correct:"B"},
+  {id:"ctcr_043",f:"CTCR",n:43,type:"qcu",q:"Le SAEIV permet d'informer :",A:"la clientèle sur le type de l'entreprise",B:"le conducteur sur l'état du trafic",C:"la clientèle d'un éventuel retard sur la ligne",D:"le responsable du réseau sur le nombre de passagers qui attendent aux différents arrêts",correct:"C"},
+  {id:"ctcr_044",f:"CTCR",n:44,type:"qcu",q:"La trousse de secours doit contenir :",A:"un scalpel",B:"de l'aspirine",C:"un assortiment de pansements de différentes tailles",D:"un garrot",correct:"C"},
+  {id:"ctcr_045",f:"CTCR",n:45,type:"qcu",q:"Pour éco-conduite, vous privilégiez plutôt :",A:"la puissance",B:"le couple maximum",C:"l'usage des freins",D:"l'usage du ralentisseur",correct:"B"},
+  {id:"ctcr_046",f:"CTCR",n:46,type:"qcu",q:"L'antipatinage (ASR) :",A:"ralentit la rotation de l'arbre de transmission",B:"actionne un clapet situé sur l'échappement",C:"réduit la puissance et freine les roues motrices",D:"augmente la force du freinage",correct:"C"},
+  {id:"ctcr_047",f:"CTCR",n:47,type:"qcu",q:"À la prise de service, vous constatez que l'affichage d'informations voyageur ne correspond pas à la ligne prévue :",A:"vous rendez compte à l'exploitation",B:"vous partez quand même. Vous le signalerez à votre collègue lors de sa prise de service",C:"vous partez et rendez compte à l'exploitation à l'occasion de votre passage au bureau",D:"vous n'avez rien à faire",correct:"A"},
+  {id:"ctcr_048",f:"CTCR",n:48,type:"qcu",q:"L'extincteur équipant les véhicules de transport en commun doit permettre de combattre :",A:"les feux de classe A et B",B:"les feux de classe B et C",C:"les feux de classe C et D",D:"les feux de classe E et F",correct:"A"},
+  {id:"ctcr_049",f:"CTCR",n:49,type:"qcu",q:"Quel équipement n'est pas obligatoire à bord d'un autocar ?",A:"Un gilet haute visibilité",B:"Un extincteur",C:"Une trousse de secours",D:"Une paire de gants",correct:"D"},
+  {id:"ctcr_050",f:"CTCR",n:50,type:"qcu",q:"L'éthylotest antidémarrage doit être contrôlé :",A:"Tous les 6 mois",B:"Tous les ans",C:"Tous les 2 ans",D:"Tous les 5 ans",correct:"B"},
+  {id:"ctcr_051",f:"CTCR",n:51,type:"qcu",q:"Le jumelage de l'ABS, de l'ASR et de l'ESP permet d'augmenter l'efficacité :",A:"du système de freinage",B:"du patinage du différentiel",C:"de traction sur les sols glissants",D:"de consommation de carburant",correct:"C"},
+
+  // THÈME 4 : Écoconduite
+  {id:"ctcr_052",f:"CTCR",n:52,type:"qcu",q:"Quel carburant alternatif est le plus utilisé pour la propulsion des autobus ?",A:"l'électricité",B:"l'émulsion eau-gazole",C:"l'essence sans plomb (SP 95)",D:"le Gaz de Pétrole Liquéfié (GPL)",correct:"A"},
+  {id:"ctcr_053",f:"CTCR",n:53,type:"qcu",q:"Concernant les particules fines, comparé à une voiture individuelle, un autobus en émet en moyenne :",A:"2 fois moins",B:"5 fois moins",C:"8 fois moins",D:"autant",correct:"C"},
+  {id:"ctcr_054",f:"CTCR",n:54,type:"qcu",q:"Quelle est l'unité de mesure du couple ?",A:"kW",B:"Nm",C:"g/kWh",D:"tr/min",correct:"B"},
+  {id:"ctcr_055",f:"CTCR",n:55,type:"qcu",q:"Concernant la quantité de CO2, comparé à une voiture individuelle, un autobus en émet en moyenne :",A:"10 fois moins",B:"2 fois moins",C:"5 fois moins",D:"c'est équivalent",correct:"A"},
+  {id:"ctcr_056",f:"CTCR",n:56,type:"qcu",q:"Vous devez ralentir et l'aiguille du compte-tours est placée en zone verte, Vous devez :",A:"utiliser le ralentisseur et rétrograder ensuite",B:"freiner et rétrograder",C:"d'abord rétrograder, ensuite utiliser le ralentisseur",D:"rétrograder et freiner après",correct:"C"},
+  {id:"ctcr_057",f:"CTCR",n:57,type:"qcu",q:"Quelles sont les principales exigences des normes Euro pour les carburants ?",A:"les normes Euro s'appliquent uniquement aux véhicules électriques",B:"les normes Euro imposent des limites sur les émissions polluant des moteurs",C:"les normes Euro définissent la composition chimique des carburants",D:"les normes Euro sont spécifiques au marché français",correct:"B"},
+  {id:"ctcr_058",f:"CTCR",n:58,type:"qcu",q:"Quel risque peut occasionner l'utilisation du régulateur de vitesse ?",A:"l'euphorie",B:"la béatitude",C:"la courtoisie",D:"l'hypovigilance",correct:"D"},
+
+  // THÈME 5 : Incivilités et vandalisme
+  {id:"ctcr_059",f:"CTCR",n:59,type:"qcu",q:"Quelle attitude n'est pas considérée comme une incivilité ?",A:"Bousculer un autre passager sans s'excuser",B:"Parler fort au téléphone",C:"Se lever en période d'affluence",D:"Abandonner un journal sur un siège",correct:"C"},
+  {id:"ctcr_060",f:"CTCR",n:60,type:"qcu",q:"En cas de découverte de clandestins dans les soutes, le conducteur encourt :",A:"une amende et une peine de prison",B:"un solide avertissement verbal",C:"un simple rappel à l'ordre",D:"aucun risque",correct:"A"},
+  {id:"ctcr_061",f:"CTCR",n:61,type:"qcu",q:"Un groupe d'individus importune une personne âgée :",A:"depuis votre siège, vous les sommez d'arrêter sous peine de débarquement",B:"vous demandez aux autres passagers d'intervenir",C:"vous lancez un appel discret pour permettre l'intervention des contrôleurs",D:"au prochain arrêt, vous invitez la personne âgée à descendre",correct:"C"},
+  {id:"ctcr_062",f:"CTCR",n:62,type:"qcu",q:"Que risque l'auteur d'un graffiti dans un autobus ?",A:"un rappel à la loi et l'obligation de nettoyer le graffiti",B:"une amende de 135€",C:"une amende de 3750€ et une peine de travail d'intérêt général",D:"une peine de prison avec sursis",correct:"C"},
+  {id:"ctcr_063",f:"CTCR",n:63,type:"qcu",q:"Vous êtes victime d'incivilités. Qui devez-vous alerter ?",A:"le service d'exploitation",B:"les pompiers",C:"le médiateur de l'entreprise",D:"les forces de l'ordre",correct:"A"},
+  {id:"ctcr_064",f:"CTCR",n:64,type:"qcu",q:"En fin de service, vous constatez que l'un des sièges du véhicule a été détérioré :",A:"Vous informez le responsable le lendemain matin",B:"Vous informez immédiatement le responsable d'exploitation",C:"Vous prévenez le chef d'atelier et planifiez la réparation",D:"Vous tentez de réparer vous-même",correct:"B"},
+  {id:"ctcr_065",f:"CTCR",n:65,type:"qcu",q:"Un passager est victime de harcèlement sur votre ligne :",A:"Vous appelez discrètement le PC pour solliciter l'intervention des agents de sécurité",B:"Vous stoppez et vous interposez physiquement",C:"Vous demandez de l'aide des passagers",D:"Vous invitez la victime à descendre au prochain arrêt",correct:"A"},
+  {id:"ctcr_066",f:"CTCR",n:66,type:"qcu",q:"Quelle sanction encourt un élève qui salit volontairement l'intérieur de l'autocar ?",A:"Un simple avertissement du principal du collège",B:"L'exclusion définitive du collège",C:"Un jour d'exclusion du service scolaire",D:"Une amende de 5ème classe",correct:"D"},
+  {id:"ctcr_067",f:"CTCR",n:67,type:"qcu",q:"Une personne vous interpelle d'un ton menaçant pour ne pas vous être arrêté à l'arrêt précédent :",A:"vous stoppez pour le faire descendre rapidement",B:"vous lui indiquez d'attendre le prochain arrêt avant de descendre",C:"vous l'ignorez et continuez votre service",D:"vous lui répondez sur le même ton et lui demandez de se calmer",correct:"B"},
+
+  // THÈME 6 : Prévention criminalité et clandestins
+  {id:"ctcr_068",f:"CTCR",n:68,type:"qcu",q:"En cas d'incivilité de la part d'un élève lors d'un service scolaire, quelle entité devez-vous alerter ?",A:"votre responsable d'exploitation",B:"le responsable du collège",C:"les parents l'élève",D:"les forces de l'ordre",correct:"A"},
+  {id:"ctcr_069",f:"CTCR",n:69,type:"qcu",q:"En cas d'arrêt prolongé de votre véhicule vous ne devez pas :",A:"fermer les portes à clé",B:"placer le véhicule de façon à condamner l'accès au réservoir de carburant",C:"privilégier un parking sécurisé",D:"laisser le véhicule sans surveillance dans une zone isolé",correct:"D"},
+  {id:"ctcr_070",f:"CTCR",n:70,type:"qcu",q:"Quelle action doit-on éviter en cas de suspicion de présence de clandestins ?",A:"obliger les clandestins à partir par la force",B:"rouler prudemment pour éviter des blessures",C:"alerter les forces de l'ordre au plus vite",D:"prévenir son responsable",correct:"A"},
+  {id:"ctcr_071",f:"CTCR",n:71,type:"qcu",q:"Quel est le principal point d'entrée des flux migratoires en Europe ?",A:"Ceuta en Espagne",B:"Lampedusa en Italie",C:"Marseille en France",D:"Lesbos en Grèce",correct:"B"},
+  {id:"ctcr_072",f:"CTCR",n:72,type:"qcu",q:"Un passager monte dans l'autobus avec un chien molossoïde non muselé :",A:"vous appelez le PC pour solliciter l'intervention des agents de sécurité",B:"vous lui interdisez l'accès",C:"vous tolérez car le chien ne présente apparemment pas de menace",D:"vous le laissez monter pourvu qu'il paie une place pour le chien",correct:"B"},
+  {id:"ctcr_073",f:"CTCR",n:73,type:"qcu",q:"Quelle sera la peine maximale pour l'auteur de dégradations dans un véhicule ?",A:"une amende de 90€",B:"une amende de 135€",C:"une amende de 3750€",D:"une peine de prison avec sursis",correct:"C"},
+  {id:"ctcr_074",f:"CTCR",n:74,type:"qcu",q:"Dans un autobus, un groupe de personnes demande tous les arrêts de la ligne sans y descendre :",A:"vous leur demandez d'arrêter pour ne pas prendre de retard sur la ligne",B:"vous les surveillez dans le rétroviseur et n'assurez que les arrêts demandés par les autres passagers",C:"vous les interpellez verbalement en menaçant d'appeler l'équipe des contrôleurs",D:"vous stoppez le véhicule et prévenez le service d'exploitation",correct:"A"},
+  {id:"ctcr_075",f:"CTCR",n:75,type:"qcu",q:"Pour monter par l'arrière, un passager décompresse la porte :",A:"vous lui ordonnez de descendre et de prendre l'autobus suivant",B:"vous ignorez la situation et reprenez votre ligne",C:"vous lui demandez de présenter un titre de transport",D:"vous appelez le pc pour réactiver la compression des portes",correct:"C"},
+  {id:"ctcr_076",f:"CTCR",n:76,type:"qcu",q:"Lors d'un service scolaire, en cas de chahut, le conducteur doit :",A:"stopper pour faire descendre les élèves concernés",B:"relever les noms des élèves en cause et référer à son employeur",C:"prendre des sanctions à l'encontre des élèves concernés",D:"prévenir le chef d'établissement où sont inscrits les élèves",correct:"B"},
+  {id:"ctcr_077",f:"CTCR",n:77,type:"qcu",q:"En cas d'arrêt pour faire le plein, le conducteur doit :",A:"laisser le code de la carte avec celle-ci",B:"laisser le moteur en marche",C:"quitter les lieux pendant le remplissage",D:"toujours garder la carte de carburant en vue",correct:"D"},
+  {id:"ctcr_078",f:"CTCR",n:78,type:"qcu",q:"Quel est le principal pays d'Europe que les clandestins cherchent à rejoindre ?",A:"la France",B:"le Royaume-Uni",C:"L'Allemagne",D:"La Suède",correct:"A"},
+  {id:"ctcr_079",f:"CTCR",n:79,type:"qcu",q:"Dans la mesure du possible, le conducteur doit éviter de stationner son véhicule :",A:"dans un parking souterrain",B:"dans l'enceinte de l'entreprise cliente",C:"dans une ruelle sans surveillance",D:"dans un espace isolé et gardé",correct:"C"},
+  {id:"ctcr_080",f:"CTCR",n:80,type:"qcu",q:"Dans les zones portuaires, le conducteur doit :",A:"éviter au maximum les arrêts imprévus",B:"laisser les portes des soutes à bagages ouvertes",C:"prendre des auto-stoppeurs",D:"demander l'itinéraire aux passants",correct:"A"},
+  {id:"ctcr_081",f:"CTCR",n:81,type:"qcu",q:"En cas de stationnement, il est important pour le conducteur de :",A:"laisser les portes arrière ouvertes",B:"laisser le moteur en marche",C:"couper tous les feux",D:"fermer toutes les portes du véhicule",correct:"D"},
+  {id:"ctcr_082",f:"CTCR",n:82,type:"qcu",q:"À la suite d'une agression ou d'un vol, vous contactez en priorité :",A:"l'ambassade ou le consulat du pays",B:"le 112",C:"les forces de l'ordre, la police ou la gendarmerie",D:"un collègue",correct:"C"},
+  {id:"ctcr_083",f:"CTCR",n:83,type:"qcu",q:"Lors d'un stationnement, le conducteur quittant son véhicule ne doit pas :",A:"remonter les vitres et verrouiller les portes",B:"vérifier le verrouillage de la caisse",C:"cacher les clefs dans le vide poches",D:"activer l'alarme",correct:"C"},
+  {id:"ctcr_084",f:"CTCR",n:84,type:"qcu",q:"En cas d'agression ou vol de bagages en cours, vous devez :",A:"appréhender et neutraliser les fautifs",B:"tenter d'établir le dialogue avec les fautifs",C:"éviter de vous exposer aux fautifs",D:"prendre la fuite",correct:"C"},
+  {id:"ctcr_085",f:"CTCR",n:85,type:"qcu",q:"Quel document doit accompagner la déclaration de vol d'un véhicule auprès de la compagnie d'assurance ?",A:"le billet collectif",B:"le dépôt de plainte",C:"l'assurance du véhicule",D:"le certificat du véhicule",correct:"B"},
+  {id:"ctcr_086",f:"CTCR",n:86,type:"qcu",q:"Lors du chargement des bagages en soute, quel comportement est recommandé ?",A:"laisser les passagers charger leurs bagages",B:"charger tous les bagages selon leur taille",C:"charger tous les bagages en ordre aléatoire",D:"contrôler l'étiquetage des bagages avant de les mettre en soute",correct:"D"},
+  {id:"ctcr_087",f:"CTCR",n:87,type:"qcu",q:"Dans la mesure du possible, le conducteur stationne son véhicule :",A:"à l'ombre",B:"dans un lieu désert et silencieux",C:"peu importe l'endroit",D:"dans un espace gardé et éclairé",correct:"D"},
+  {id:"ctcr_088",f:"CTCR",n:88,type:"qcu",q:"Un conducteur d'autocar entrant sur le territoire britannique avec un clandestin à bord :",A:"ne risque rien dans tous les cas",B:"risque une peine de prison ferme",C:"risque une légère amende",D:"c'est l'entreprise qui est responsable",correct:"B"},
+  {id:"ctcr_089",f:"CTCR",n:89,type:"qcu",q:"Un enfant est victime de vol lors de votre service scolaire :",A:"vous prévenez votre employeur dès que possible",B:"vous stoppez et menez l'enquête pour identifier le voleur",C:"vous prévenez l'autorité organisatrice du transport scolaire concerné",D:"vous modifiez l'itinéraire pour vous rendre à la gendarmerie la plus proche",correct:"A"},
+  {id:"ctcr_090",f:"CTCR",n:90,type:"qcu",q:"Qui sera responsable si un enfant de 11 ans détériore l'intérieur d'un autocar ?",A:"l'enfant",B:"les parents de l'enfant",C:"l'accompagnateur",D:"l'établissement scolaire",correct:"B"},
+
+  // THÈME 7 : Perturbateurs de conduite et hygiène de vie
+  {id:"ctcr_091",f:"CTCR",n:91,type:"qcu",q:"Quel doit être le comportement d'un conducteur en cas de fatigue au volant ?",A:"Augmenter le volume de la musique",B:"Aérer l'habitacle",C:"S'arrêter faire une pause",D:"Discuter avec un passager pour se tenir éveillé",correct:"C"},
+  {id:"ctcr_092",f:"CTCR",n:92,type:"qcu",q:"Un médicament ayant un pictogramme spécifique de niveau 2 et de couleur orange signifie :",A:"être prudent, ne pas conduire sans lire la notice",B:"être très prudent, ne pas conduire sans l'avis d'un professionnel de la santé",C:"attention danger : ne pas conduire",D:"être prudent, bien que les effets soient anodins",correct:"B"},
+  {id:"ctcr_093",f:"CTCR",n:93,type:"qcu",q:"Le risque de somnolence est plus élevé :",A:"la nuit, entre 2 et 4 heures",B:"le matin, entre 5 et 7 heures",C:"l'après-midi, entre 16 et 17 heures",D:"le soir, entre 20 et 22 heures",correct:"A"},
+  {id:"ctcr_094",f:"CTCR",n:94,type:"qcu",q:"Manger un sandwich en conduisant peut occasionner :",A:"une amende",B:"une perte de points",C:"l'immobilisation du véhicule",D:"aucune conséquence",correct:"A"},
+  {id:"ctcr_095",f:"CTCR",n:95,type:"qcu",q:"Regarder un écran autre que celui apportant une aide à la conduite est sanctionné par :",A:"une amende de 135€ et 3 points de suspension au permis de conduire",B:"une amende de 135€ et 6 points de suspension au permis de conduire",C:"une amende de 1500€ et 3 points de suspension au permis de conduire",D:"une amende de 1500€ et 6 points de suspension au permis de conduire",correct:"C"},
+  {id:"ctcr_096",f:"CTCR",n:96,type:"qcu",q:"Quel médicament permet de lutter efficacement contre la fatigue ?",A:"aspirine",B:"anxiolytique",C:"antidépresseur",D:"aucun",correct:"D"},
+  {id:"ctcr_097",f:"CTCR",n:97,type:"qcu",q:"Une surconsommation de médicaments :",A:"aide à la confiance en soi",B:"rend plus performant",C:"nuit à la qualité du travail",D:"compense le manque de sommeil",correct:"C"},
+  {id:"ctcr_098",f:"CTCR",n:98,type:"qcu",q:"Le meilleur moyen pour lutter contre l'hypovigilance consiste à :",A:"ouvrir la fenêtre pour prendre l'air",B:"s'arrêter pour faire une pause",C:"boire de l'eau",D:"rouler plus vite",correct:"B"},
+  {id:"ctcr_099",f:"CTCR",n:99,type:"qcu",q:"Lors d'un repas, le pic d'alcoolémie est atteint :",A:"immédiatement après le dernier verre d'alcool",B:"30 minutes après le dernier verre d'alcool",C:"1 heure après le dernier verre d'alcool",D:"1 heure 30 après le dernier verre d'alcool",correct:"C"},
+  {id:"ctcr_100",f:"CTCR",n:100,type:"qcu",q:"Quel repas est équilibré ?",A:"une part de pizza, une part de gâteau et un café",B:"un hamburger avec des frites accompagné d'un soda et un milkshake",C:"une salade verte accompagnée d'un verre d'eau",D:"une assiette de crudité, une escalope de dinde avec des haricots, un yaourt et un fruit",correct:"D"},
+  {id:"ctcr_101",f:"CTCR",n:101,type:"qcu",q:"Mon téléphone portable sonne, je peux répondre s'il est équipé :",A:"d'un kit piéton",B:"d'écouteurs filaires",C:"d'une oreillette Bluetooth",D:"d'une connexion « mains-libres » au système multimédia du véhicule",correct:"D"},
+  {id:"ctcr_102",f:"CTCR",n:102,type:"qcu",q:"L'alcool est en cause dans :",A:"10% des accidents mortels",B:"20% des accidents mortels",C:"30% des accidents mortels",D:"40% des accidents mortels",correct:"C"},
+  {id:"ctcr_103",f:"CTCR",n:103,type:"qcu",q:"Est-il possible de manger un sandwich à son poste de conduite en roulant ?",A:"Aucun risque si vous posez votre sandwich après chaque bouchée",B:"Vous risquez d'être verbalisé",C:"Vous risquez une perte de points",D:"Il n'y a pas d'interdiction",correct:"B"},
+  {id:"ctcr_104",f:"CTCR",n:104,type:"qcu",q:"Quel est en moyenne le temps nécessaire pour lire un sms ?",A:"2 secondes",B:"5 secondes",C:"7 secondes",D:"8 secondes",correct:"B"},
+  {id:"ctcr_105",f:"CTCR",n:105,type:"qcu",q:"L'hypovigilance :",A:"diminue les réflexes",B:"diminue le temps de réaction",C:"accroît l'anticipation",D:"diminue la distance de freinage",correct:"A"},
+  {id:"ctcr_106",f:"CTCR",n:106,type:"qcu",q:"Pour une bonne hygiène de vie, il est préférable :",A:"de ne pas boire d'eau entre les repas",B:"de prendre un repas copieux le soir",C:"de dormir par fractionnements",D:"d'adapter ses repas suivant sa dépense physique",correct:"D"},
+  {id:"ctcr_107",f:"CTCR",n:107,type:"qcu",q:"L'usage du téléphone en conduisant multiplie le risque d'accident par :",A:"1",B:"2",C:"3",D:"5",correct:"C"},
+  {id:"ctcr_108",f:"CTCR",n:108,type:"qcu",q:"Conduire sous l'emprise de stupéfiants peut entraîner :",A:"le retrait de points et une amende",B:"une peine de prison et une amende",C:"une peine de prison, une amende et une suspension du permis de conduire",D:"le retrait de points, une amende, une peine de prison et l'annulation du permis de conduire",correct:"D"},
+
+  // THÈME 8 : RSE et tachygraphe
+  {id:"ctcr_109",f:"CTCR",n:109,type:"qcu",q:"La carte de conducteur qui est utilisée avec le tachygraphe est valable :",A:"10 ans",B:"5 ans",C:"2 ans",D:"pour une durée indéterminée",correct:"B"},
+  {id:"ctcr_110",f:"CTCR",n:110,type:"qcu",q:"Le tachygraphe, placé en position « OUT » signifie :",A:"la fin de la journée",B:"être en fin de quart",C:"un travail réalisé hors du champ de la R.S.E",D:"que l'appareil de contrôle n'est pas en service",correct:"C"},
+  {id:"ctcr_111",f:"CTCR",n:111,type:"qcu",q:"Le temps passé en double équipage sans conduire, est considéré comme :",A:"du repos",B:"de la disponibilité",C:"une autre tâche",D:"de la conduite",correct:"B"},
+  {id:"ctcr_112",f:"CTCR",n:112,type:"qcu",q:"L'un de ces services n'est pas soumis à la réglementation sociale européenne :",A:"Le service urbain",B:"Le service occasionnel",C:"La ligne régulière de plus de 50 kilomètres",D:"Le service librement organisé",correct:"A"},
+  {id:"ctcr_113",f:"CTCR",n:113,type:"qcu",q:"Quelle est la durée minimale du repos journalier pris en double équipage ?",A:"11h",B:"9h",C:"12h en fractionnant 3h et 9h",D:"10h",correct:"B"},
+  {id:"ctcr_114",f:"CTCR",n:114,type:"qcu",q:"La conduite continue est limitée à 4 heures entre :",A:"20h et 7h",B:"22h et 6h",C:"21h et 6h",D:"21h et 7h",correct:"C"},
+  {id:"ctcr_115",f:"CTCR",n:115,type:"qcu",q:"Lors d'un service occasionnel international cumulant 12 jours d'activités consécutives, le conducteur limite sa durée de conduite continue entre 22h et 6h à :",A:"4h30",B:"4h",C:"3h30",D:"3h",correct:"D"},
+  {id:"ctcr_116",f:"CTCR",n:116,type:"qcu",q:"La moitié des accidents liés à la fatigue surviennent sur des trajets :",A:"De moins de 2 heures",B:"De moins de 4 heures",C:"De moins de 6 heures",D:"De moins de 8 heures",correct:"A"},
 ];
 
 const TOTAL = ALL_QUESTIONS.length;
@@ -1741,7 +2040,7 @@ const TOTAL = ALL_QUESTIONS.length;
 //   quizCount: number
 // ═══════════════════════════════════════════════
 
-const APP_VERSION = 'v32b'; // Jamais de reset auto — uniquement pour info // Changer à chaque mise à jour pour reset les stats
+const APP_VERSION = 'v37i'; // Jamais de reset auto — uniquement pour info // Changer à chaque mise à jour pour reset les stats
 
 function loadStats() {
   try {
@@ -2686,7 +2985,7 @@ function updateHomeStats() {
   }
 
   // Badge "⏸ En pause" sur chaque mode avec un quiz en attente
-  ['all','permisd','memo','failed','revision','oral'].forEach(m => {
+  ['all','permisd','memo','failed','revision','oral','rsersf'].forEach(m => {
     const el = document.getElementById('mode-' + m);
     if (!el) return;
     const hasPause = !!pausedStates[m];
@@ -2710,6 +3009,8 @@ function updateHomeStats() {
     { key: 'permisd', label: '🚌 Permis D' },
     { key: 'memo', label: '📋 Mémo CTCR' },
     { key: 'oral', label: '🎤 Fiches Orales' },
+    { key: 'rsersf', label: '📜 RSE — RSF' },
+    { key: 'ctcr', label: '🚌 QCU CTCR' },
     { key: 'failed', label: '⚡ Questions ratées' },
     { key: 'revision', label: '📖 Révision' },
   ];
@@ -2899,6 +3200,59 @@ const STRICT_ANSWERS = {
   ],
 };
 
+
+// ═══════════════════════════════════════════════
+// isCorrectExact — comparaison stricte pour RSE-RSF
+// Tolérance : espaces, accents, majuscules, ponctuation
+// Pas de synonymes, pas de Levenshtein, pas de mots-clés partiels
+// ═══════════════════════════════════════════════
+// Conversion nombres écrits en lettres → chiffres (pour RSE-RSF)
+const WORD_NUMS = {
+  'zero':0,'un':1,'une':1,'deux':2,'trois':3,'quatre':4,'cinq':5,
+  'six':6,'sept':7,'huit':8,'neuf':9,'dix':10,'onze':11,'douze':12,
+  'treize':13,'quatorze':14,'quinze':15,'seize':16,'dix-sept':17,
+  'dix-huit':18,'dix-neuf':19,'vingt':20,'trente':30,'quarante':40,
+  'cinquante':50,'soixante':60,'soixante-dix':70,'quatre-vingt':80,
+  'quatre-vingt-dix':90,'cent':100
+};
+
+function wordsToNumbers(s) {
+  let t = s.toLowerCase();
+  // Remplacer les nombres composés (ex: "trente cinq" → 35)
+  t = t.replace(/\b(vingt|trente|quarante|cinquante|soixante)\s+(et\s+)?(un|une|deux|trois|quatre|cinq|six|sept|huit|neuf|dix|onze|douze|treize|quatorze|quinze|seize|dix-sept|dix-huit|dix-neuf)\b/gi, (m, d, et, u) => {
+    return (WORD_NUMS[d.toLowerCase()] || 0) + (WORD_NUMS[u.toLowerCase()] || 0);
+  });
+  // Remplacer les nombres simples
+  Object.entries(WORD_NUMS).sort((a,b) => b[0].length - a[0].length).forEach(([word, num]) => {
+    t = t.replace(new RegExp('\\b' + word + '\\b', 'gi'), num);
+  });
+  return t;
+}
+
+function normalizeExact(s) {
+  // 0. Convertir nombres en lettres → chiffres
+  let t = wordsToNumbers(s);
+  // 1. Normaliser les unités (heures, minutes, km/h, tonnes, etc.)
+  t = normalizeUnits(t);
+  // 2. Normaliser accents, majuscules, espaces
+  return t
+    .toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9+]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function isCorrectExact(ans, correct) {
+  // Gérer les alternatives séparées par " ou "
+  const alternatives = correct.split(/ ou /i);
+  const aNorm = normalizeExact(ans);
+  return alternatives.some(alt => {
+    const cNorm = normalizeExact(alt);
+    return aNorm === cNorm;
+  });
+}
+
 function isCorrectStrict(ans, qId) {
   if (!STRICT_ANSWERS[qId]) return null; // pas de validation stricte pour cette question
   const aNorm = ans.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9 ]/g, ' ').replace(/\s+/g, ' ').trim();
@@ -2917,6 +3271,12 @@ function isCorrect(ans, correct, qId) {
   // Vérification stricte pour certaines questions
   if (qId && STRICT_ANSWERS[qId]) {
     return isCorrectStrict(ans, qId);
+  }
+
+  // Mode RSE-RSF : réponse exacte obligatoire (pas de fuzzy matching)
+  // Tolérance uniquement sur espaces, accents, majuscules et ponctuation légère
+  if (qId && qId.startsWith('rsersf_')) {
+    return isCorrectExact(ans, correct);
   }
 
   const aNorm  = normalize(ans);
@@ -2985,7 +3345,7 @@ let currentMode = 'all'; // 'all' | 'permisd' | 'memo' | 'oral' | 'failed' | 're
 
 function setMode(mode) {
   currentMode = mode;
-  ['all','permisd','memo','oral','failed','revision'].forEach(m => {
+  ['all','permisd','memo','oral','failed','revision','rsersf','ctcr'].forEach(m => {
     const el = document.getElementById('mode-'+m);
     if (el) el.classList.toggle('active', m === mode);
   });
@@ -2999,6 +3359,12 @@ function setMode(mode) {
   } else if (mode === 'revision') {
     btn.textContent = '📖 Lancer la Révision';
     btn.onclick = () => startQuiz();
+  } else if (mode === 'rsersf') {
+    btn.textContent = '📜 Lancer RSE — RSF';
+    btn.onclick = () => startQuiz();
+  } else if (mode === 'ctcr') {
+    btn.textContent = '🚌 Lancer QCU CTCR';
+    btn.onclick = () => startQuiz();
   } else {
     btn.textContent = '🚀 Lancer le quiz';
     btn.onclick = () => startQuiz();
@@ -3011,18 +3377,22 @@ function getQuestionsForMode(mode) {
     return ALL_QUESTIONS.filter(q => typeof q.f === 'number' && q.f >= 1 && q.f <= 20);
   } else if (mode === 'memo') {
     return ALL_QUESTIONS.filter(q => String(q.f).toUpperCase().includes('MEMO') || String(q.f) === 'MÉMO');
+  } else if (mode === 'rsersf') {
+    return ALL_QUESTIONS.filter(q => String(q.f) === 'RSE-RSF');
+  } else if (mode === 'ctcr') {
+    return ALL_QUESTIONS.filter(q => String(q.f) === 'CTCR');
   } else if (mode === 'failed') {
     const stats = loadStats();
     const failedIds = new Set(Object.keys(stats.wrong || {}));
-    return ALL_QUESTIONS.filter(q => failedIds.has(q.id));
+    return ALL_QUESTIONS.filter(q => failedIds.has(q.id) && q.type !== 'trous');
   } else if (mode === 'revision') {
     const stats = loadStats();
     const revisionIds = new Set(stats.revisionList || []);
-    return ALL_QUESTIONS.filter(q => revisionIds.has(q.id));
+    return ALL_QUESTIONS.filter(q => revisionIds.has(q.id) && q.type !== 'trous');
   } else if (mode === 'all') {
-    return ALL_QUESTIONS;
+    return ALL_QUESTIONS.filter(q => q.type !== 'trous');
   }
-  return ALL_QUESTIONS;
+  return ALL_QUESTIONS.filter(q => q.type !== 'trous');
 }
 
 
@@ -3379,8 +3749,10 @@ function quitAndRestart() {
 }
 
 function startQuiz(resume) {
-  // Si un état en pause existe pour ce mode, proposer de reprendre
-  if (!resume && getSavedQuizState(currentMode)) {
+  // Si un état en pause VALIDE existe pour ce mode, proposer de reprendre
+  const saved = getSavedQuizState(currentMode);
+  const validSaved = saved && Array.isArray(saved.questions) && saved.questions.length > 0 && Array.isArray(saved.answers);
+  if (!resume && validSaved) {
     showResumeModal();
     return;
   }
@@ -3395,6 +3767,8 @@ function startQuiz(resume) {
   let quizSize = 10;
   if (currentMode === 'failed' || currentMode === 'revision') {
     quizSize = Math.min(10, Math.max(1, pool.length));
+  } else if (currentMode === 'ctcr') {
+    quizSize = Math.min(20, Math.max(1, pool.length));
   }
 
   const stats = loadStats();
@@ -3484,6 +3858,9 @@ function renderQuestion() {
   let typeLabel, typeBadgeClass;
   if (q.type==='vf') { typeLabel='VRAI / FAUX'; typeBadgeClass='type-vf'; }
   else if (q.type==='oun') { typeLabel='OUI / NON'; typeBadgeClass='type-oun'; }
+  else if (q.type==='trous') { typeLabel='EXERCICE À TROUS'; typeBadgeClass='type-open'; }
+  else if (q.type==='qcu') { typeLabel='QCU'; typeBadgeClass='type-open'; }
+  else if (q.type==='picto') { typeLabel='PICTOGRAMME'; typeBadgeClass='type-open'; }
   else { typeLabel='RÉPONSE OUVERTE'; typeBadgeClass='type-open'; }
 
   let seenBadge;
@@ -3493,7 +3870,7 @@ function renderQuestion() {
   else seenBadge = `<span class="q-badge seen-badge" style="color:#ef4444;border-color:rgba(239,68,68,0.25);background:rgba(239,68,68,0.06)">${wrongCount}✗ Ratée</span>`;
 
   document.getElementById('q-meta').innerHTML = `<span class="q-badge fiche">Fiche ${q.f}</span><span class="q-badge ${typeBadgeClass}">${typeLabel}</span>${seenBadge}`;
-  document.getElementById('q-text').textContent = q.q;
+  document.getElementById('q-text').textContent = (q.type === 'picto') ? '' : q.q;
 
   const panneauDiv = document.getElementById('q-panneau');
   if (q.panneau && PANNEAUX[q.panneau]) panneauDiv.innerHTML = `<div class="panneau-wrap">${PANNEAUX[q.panneau]}</div>`;
@@ -3505,6 +3882,14 @@ function renderQuestion() {
     area.innerHTML = `<div class="btn-grid-vf"><button class="ans-btn ${ans==='Vrai'?'sel-vrai':''}" onclick="selectVF('Vrai',this)">Vrai</button><button class="ans-btn ${ans==='Faux'?'sel-faux':''}" onclick="selectVF('Faux',this)">Faux</button></div>`;
   } else if (q.type==='oun') {
     area.innerHTML = `<div class="btn-grid-oun"><button class="ans-btn ${ans==='Oui'?'sel-oui':''}" onclick="selectOUN('Oui',this)">Oui</button><button class="ans-btn ${ans==='Non'?'sel-non':''}" onclick="selectOUN('Non',this)">Non</button></div>`;
+  } else if (q.type === 'trous') {
+    renderRSFTrous(q, area); } else if (q.type === 'qcu') {
+    area.innerHTML = `<div class="btn-grid-qcu">
+      <button class="ans-btn qcu-btn ${ans==='A'?'selected':''}" onclick="selectQCU('A')"><b>A.</b> ${q.A}</button>
+      <button class="ans-btn qcu-btn ${ans==='B'?'selected':''}" onclick="selectQCU('B')"><b>B.</b> ${q.B}</button>
+      <button class="ans-btn qcu-btn ${ans==='C'?'selected':''}" onclick="selectQCU('C')"><b>C.</b> ${q.C}</button>
+      <button class="ans-btn qcu-btn ${ans==='D'?'selected':''}" onclick="selectQCU('D')"><b>D.</b> ${q.D}</button>
+    </div>`;
   } else {
     area.innerHTML = `<div><textarea class="open-input" rows="3" placeholder="Écris ta réponse ici..." oninput="setOpen(this.value)">${ans||''}</textarea></div>`;
   }
@@ -3529,15 +3914,156 @@ function addRipple(btn) {
 }
 function selectVF(val,btn) { answers[current]=val; addRipple(btn); document.querySelectorAll('.btn-grid-vf .ans-btn').forEach(b=>b.className='ans-btn'); btn.className='ans-btn sel-'+(val==='Vrai'?'vrai':'faux'); }
 function selectOUN(val,btn) { answers[current]=val; addRipple(btn); document.querySelectorAll('.btn-grid-oun .ans-btn').forEach(b=>b.className='ans-btn'); btn.className='ans-btn sel-'+(val==='Oui'?'oui':'non'); }
+
+
+// ═══════════════════════════════════════════════
+// RSE-RSF — Rendu trous inline
+// ═══════════════════════════════════════════════
+
+function renderRSFTrous(q, area) {
+  const saved = answers[current] || {};
+  let totalTrous = 0, filled = 0;
+
+  // Compter tous les trous
+  q.sections.forEach(sec => {
+    sec.lignes.forEach(ligne => { totalTrous += ligne.r.length; });
+  });
+
+  let html = `<div class="rsf-card">
+    <div class="rsf-titre">${q.titre}</div>
+    <div class="rsf-sous-titre">${q.sous_titre}</div>
+    <div class="rsf-prog" id="rsf-prog">0 / ${totalTrous} cases remplies</div>`;
+
+  let globalIdx = 0;
+  q.sections.forEach((sec, si) => {
+    if (sec.lignes.length === 0) return;
+    html += `<div class="rsf-section-label">${sec.label}</div>`;
+    sec.lignes.forEach((ligne, li) => {
+      let texte = ligne.t;
+      // Remplacer chaque {N} par un input
+      for (let ri = 0; ri < ligne.r.length; ri++) {
+        const key = si + '_' + li + '_' + ri;
+        const val = saved[key] || '';
+        const w = Math.max(60, ligne.r[ri].length * 11) + 'px';
+        texte = texte.replace(
+          '{' + ri + '}',
+          `<input class="rsf-trou" data-key="${key}" data-si="${si}" data-li="${li}" data-ri="${ri}"
+            value="${val}" style="width:${w}"
+            placeholder="..." autocomplete="off"
+            oninput="rsfTrouChange(this,'${q.id}')">`
+        );
+        globalIdx++;
+      }
+      // Ligne sans trous (texte pur, ex: interdiction)
+      const cls = ligne.r.length === 0 ? 'rsf-ligne rsf-notice' : 'rsf-ligne';
+      html += `<div class="${cls}">${texte}</div>`;
+    });
+  });
+
+  html += '</div>';
+  area.innerHTML = html;
+  rsfUpdateProg(q);
+}
+
+function rsfTrouChange(input, qId) {
+  if (!answers[current] || typeof answers[current] !== 'object') answers[current] = {};
+  answers[current][input.dataset.key] = input.value;
+  rsfUpdateProg(questions[current]);
+}
+
+function rsfUpdateProg(q) {
+  const saved = answers[current] || {};
+  let filled = 0, total = 0;
+  q.sections.forEach((sec, si) => {
+    sec.lignes.forEach((ligne, li) => {
+      ligne.r.forEach((r, ri) => {
+        total++;
+        if ((saved[si + '_' + li + '_' + ri] || '').trim()) filled++;
+      });
+    });
+  });
+  const el = document.getElementById('rsf-prog');
+  if (el) el.textContent = filled + ' / ' + total + ' cases remplies';
+}
+
+function rsfValider(q) {
+  const saved = answers[current] || {};
+  let correct = 0, total = 0;
+  q.sections.forEach((sec, si) => {
+    sec.lignes.forEach((ligne, li) => {
+      ligne.r.forEach((rep, ri) => {
+        total++;
+        const key = si + '_' + li + '_' + ri;
+        const inp = document.querySelector(`.rsf-trou[data-key="${key}"]`);
+        if (!inp) return;
+        const userVal = (saved[key] || '').trim();
+        const ok = userVal && isCorrectExact(userVal, rep);
+        inp.readOnly = true;
+        inp.classList.remove('ok','err');
+        if (ok) {
+          inp.classList.add('ok');
+          correct++;
+        } else {
+          inp.classList.add('err');
+          // Afficher la correction après le champ
+          const corrEl = document.createElement('span');
+          corrEl.className = 'rsf-corr-val';
+          corrEl.textContent = '→ ' + rep;
+          inp.after(corrEl);
+        }
+      });
+    });
+  });
+  // Score
+  const pct = total > 0 ? Math.round(correct / total * 100) : 0;
+  const col = pct >= 80 ? '#22c55e' : pct >= 50 ? '#f59e0b' : '#ef4444';
+  const card = document.querySelector('.rsf-card');
+  if (card) {
+    const scoreEl = document.createElement('div');
+    scoreEl.className = 'rsf-score';
+    scoreEl.style.cssText = `color:${col};background:rgba(0,0,0,0.25)`;
+    scoreEl.textContent = pct + '% — ' + correct + ' / ' + total + ' correctes';
+    card.appendChild(scoreEl);
+  }
+  // Stocker résultat
+  quizResults[current] = (pct >= 70);
+  return pct >= 70;
+}
+
+
+// ═══════════════════════════════════════════════
+// QCU — Sélection d'une réponse
+// ═══════════════════════════════════════════════
+function selectQCU(letter) {
+  answers[current] = letter;
+  document.querySelectorAll('.qcu-btn').forEach((btn, i) => {
+    btn.classList.toggle('selected', ['A','B','C','D'][i] === letter);
+  });
+  saveActiveQuiz();
+}
+
 function setOpen(val) { answers[current]=val; }
 function goBack() { if(current>0){ stopTTS(); current--; renderQuestion(); } }
 
 function goNext() {
   stopTTS(); // Couper lecture avant de passer à la suivante
   const q = questions[current];
-  if (q.type!=='open' && !answers[current]) {
+  if (q.type!=='open' && q.type!=='trous' && q.type!=='qcu' && !answers[current]) {
     const area = document.getElementById('answers-area');
     area.style.animation='none'; area.offsetHeight; area.style.animation='shake 0.4s ease';
+    return;
+  }
+  if (q.type === 'qcu' || q.type === 'picto') {
+    quizResults[current] = answers[current] === q.correct;
+    saveActiveQuiz();
+    if (current < questions.length-1) { current++; renderQuestion(); } else { showResults(); }
+    return;
+  }
+  if (q.type === 'trous') {
+    rsfValider(q);
+    saveActiveQuiz();
+    // Valider et passer directement à la suivante
+    if (current < questions.length - 1) { current++; renderQuestion(); } else { showResults(); }
     return;
   }
   quizResults[current] = isCorrect(answers[current], q.correct, q.id);
@@ -3557,7 +4083,7 @@ function showHistory() {
   modal.style.cssText = 'overflow-y:auto;align-items:flex-start;padding:16px 12px;';
 
   const modeLabels = { all:'🎯 Tout mélangé', permisd:'🚌 Permis D', memo:'📋 Mémo CTCR',
-    failed:'⚡ Questions ratées', revision:'📖 Révision', oral:'🎤 Fiches Orales' };
+    failed:'⚡ Questions ratées', revision:'📖 Révision', oral:'🎤 Fiches Orales', rsersf:'📜 RSE — RSF', ctcr:'🚌 QCU CTCR' };
 
   if (history.length === 0) {
     modal.innerHTML = '<div class="modal-box"><h3>📋 Historique</h3><p style="color:var(--muted)">Aucun quiz terminé pour l\'instant.</p><button class="modal-btn secondary" onclick="document.getElementById(\'history-modal\').remove()">✕ Fermer</button></div>';
@@ -3651,7 +4177,20 @@ function showResults() {
   const rs = document.getElementById('results-screen');
   rs.style.display='block';
   let score=0;
-  const items = questions.map((q,i)=>{ const ok=isCorrect(answers[i],q.correct,q.id); if(ok)score++; quizResults[i]=ok; return{q,ans:answers[i],ok}; });
+  const items = questions.map((q,i)=>{
+    let ok;
+    if (q.type === 'trous') {
+      ok = quizResults[i] === true;
+    } else if (q.type === 'qcu') {
+      ok = answers[i] === q.correct;
+      quizResults[i] = ok;
+    } else {
+      ok = isCorrect(answers[i], q.correct, q.id);
+      quizResults[i] = ok;
+    }
+    if(ok) score++;
+    return {q, ans:answers[i], ok};
+  });
   const totalQ = questions.length;
   recordResults(items.map(item=>({id:item.q.id,correct:item.ok})), currentMode);
   saveQuizToHistory(items, currentMode, score, totalQ); // Sauvegarder dans l'historique
@@ -3679,7 +4218,7 @@ function showResults() {
   const msCumul = (statsAfter.modeStats || {})[currentMode] || { correct: 0, wrong: 0 };
   const msCumulTot = msCumul.correct + msCumul.wrong;
   const msCumulPct = msCumulTot > 0 ? Math.round(msCumul.correct / msCumulTot * 100) : 0;
-  const modeLabel2 = { all: 'Tout mélangé', permisd: 'Permis D', memo: 'Mémo CTCR', failed: 'Questions ratées', revision: 'Révision', oral: 'Fiches Orales' }[currentMode] || currentMode;
+  const modeLabel2 = { all: 'Tout mélangé', permisd: 'Permis D', memo: 'Mémo CTCR', failed: 'Questions ratées', revision: 'Révision', oral: 'Fiches Orales', rsersf: 'RSE — RSF', ctcr: 'QCU CTCR' }[currentMode] || currentMode;
   const msCumulColor = msCumulPct >= 80 ? '#22c55e' : msCumulPct >= 50 ? '#f59e0b' : '#ef4444';
   const statsCumulHtml = msCumulTot > 0 ? `
     <div style="background:rgba(61,111,255,0.08);border:1px solid rgba(61,111,255,0.2);border-radius:var(--radius-sm);padding:12px 16px;margin-bottom:14px;text-align:center;">
@@ -3693,6 +4232,93 @@ function showResults() {
         Total global : <strong style="color:#22c55e">${masteredAfter}</strong>/<strong style="color:#e8e8f0">${TOTAL}</strong>
       </div><div class="score-msg">${msg}</div></div><div class="results-list">`;
   items.forEach((item,i)=>{
+    if (item.q.type === 'qcu') {
+      const q = item.q;
+      html+=`<div class="result-item ${item.ok?'correct':'wrong'}" style="animation-delay:${i*0.07}s"><div class="ri-header"><span class="ri-num">Q${i+1}</span><span class="ri-q" style="font-size:12px">${q.q}</span><span class="ri-icon">${item.ok?'✓':'✗'}</span></div><div class="ri-answers" style="font-size:12px;padding:6px 4px">${['A','B','C','D'].map(l=>{const c=l===q.correct?'#22c55e':(l===item.ans&&!item.ok)?'#ef4444':'var(--muted)';const ic=l===q.correct?' ✓':(l===item.ans&&!item.ok)?' ✗':'';return '<div style="color:'+c+';padding:2px 0"><b>'+l+'</b> — '+q[l]+ic+'</div>';}).join('')}</div></div>`;
+      return;
+    }
+    if (item.q.type === 'qcu') {
+      const q = item.q;
+      const userLetter = item.ans || '';
+      html+=`<div class="result-item ${item.ok?'correct':'wrong'}" style="animation-delay:${i*0.07}s">
+        <div class="ri-header">
+          <span class="ri-num">Q${i+1}</span>
+          <span class="ri-q" style="font-size:13px">${q.q}</span>
+          <span class="ri-icon">${item.ok?'✓':'✗'}</span>
+        </div>
+        <div class="ri-answers" style="font-size:12px;padding:6px 4px 2px">
+          ${['A','B','C','D'].map(l => {
+            const isCorrect = l === q.correct;
+            const isUser = l === userLetter;
+            const col = isCorrect ? '#22c55e' : (isUser && !isCorrect) ? '#ef4444' : 'var(--muted)';
+            const icon = isCorrect ? ' ✓' : (isUser && !isCorrect) ? ' ✗' : '';
+            return '<div style="color:'+col+';padding:2px 0"><b>'+l+'</b> — '+q[l]+icon+'</div>';
+          }).join('')}
+        </div>
+      </div>`;
+      return;
+    }
+    if (item.q.type === 'trous') {
+      const q = item.q;
+      const saved = item.ans && typeof item.ans === 'object' ? item.ans : {};
+      // Calculer score
+      let ok_count = 0, total_count = 0;
+      q.sections.forEach((sec, si) => {
+        sec.lignes.forEach((ligne, li) => {
+          ligne.r.forEach((rep, ri) => {
+            total_count++;
+            const userVal = (saved[si+'_'+li+'_'+ri]||'').trim();
+            if (userVal && isCorrectExact(userVal, rep)) ok_count++;
+          });
+        });
+      });
+      const pct = total_count > 0 ? Math.round(ok_count/total_count*100) : 0;
+      const col = pct>=80?'#22c55e':pct>=50?'#f59e0b':'#ef4444';
+      const detId = 'trous-detail-'+i;
+
+      // En-tête dépliable
+      html+=`<div class="result-item ${item.ok?'correct':'wrong'}" style="animation-delay:${i*0.07}s">
+        <div class="ri-header" onclick="const d=document.getElementById('${detId}');const arr=document.getElementById('${detId}-arr');if(d.style.display==='none'){d.style.display='block';arr.textContent='▲';}else{d.style.display='none';arr.textContent='▼';}" style="cursor:pointer;">
+          <span class="ri-num">Fiche ${q.n}</span>
+          <span class="ri-q" style="flex:1">${q.titre}</span>
+          <span style="display:flex;align-items:center;gap:6px;">
+            <span style="font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;color:${col}">${pct}%</span>
+            <span style="color:var(--muted);font-size:11px;" id="${detId}-arr">▼</span>
+          </span>
+        </div>
+        <div id="${detId}" style="display:none;margin-top:10px;border-top:1px solid var(--border);padding-top:8px;">`;
+
+      // Détail ligne par ligne
+      q.sections.forEach((sec, si) => {
+        html+=`<div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:var(--accent);background:rgba(61,111,255,0.08);border-left:3px solid var(--accent);padding:3px 8px;margin:8px 0 4px;">${sec.label}</div>`;
+        sec.lignes.forEach((ligne, li) => {
+          if (ligne.r.length === 0) {
+            html+=`<div style="font-size:12px;color:var(--muted);font-style:italic;padding:3px 4px;">${ligne.t}</div>`;
+            return;
+          }
+          // Reconstruire le texte avec bonnes/mauvaises réponses
+          let texte = ligne.t;
+          let allOk = true;
+          for (let ri = 0; ri < ligne.r.length; ri++) {
+            const key = si+'_'+li+'_'+ri;
+            const userVal = (saved[key]||'').trim();
+            const rep = ligne.r[ri];
+            const isOk = userVal && isCorrectExact(userVal, rep);
+            if (!isOk) allOk = false;
+            const displayUser = userVal || '(vide)';
+            const col2 = isOk ? '#22c55e' : '#ef4444';
+            const content2 = isOk
+              ? '<span style="color:#22c55e;font-weight:700;">'+userVal+'</span>'
+              : '<span style="color:#ef4444;font-weight:700;">'+(userVal||'(vide)')+'</span><span style="color:#22c55e;font-size:10px;margin-left:3px;">→ '+rep+'</span>';
+            texte = texte.replace('{'+ri+'}', content2);
+          }
+          html+=`<div style="font-size:12px;color:var(--text);padding:4px 4px;border-bottom:1px solid rgba(255,255,255,0.04);line-height:1.8;">${texte}</div>`;
+        });
+      });
+
+      html+=`</div></div>`;
+      return;
+    }
     const hasPanneau=item.q.panneau&&PANNEAUX[item.q.panneau];
     html+=`<div class="result-item ${item.ok?'correct':'wrong'}" style="animation-delay:${i*0.07}s"><div class="ri-header"><span class="ri-num">Q${i+1}·F${item.q.f}</span><span class="ri-q">${item.q.q}</span><span class="ri-icon">${item.ok?'✓':'✗'}</span></div>${hasPanneau?`<div class="ri-panneau">${PANNEAUX[item.q.panneau]}</div>`:''}<div class="ri-answers">${!item.ok?`<div class="ri-your">Ta réponse : ${item.ans||'(vide)'}</div>`:''}<div class="ri-correct">✓ Bonne réponse : ${item.q.correct}</div></div></div>`;
   });
@@ -4032,7 +4658,7 @@ const ORAL_FICHES = [
         { name: '', bullets: ['L\'anticipation diminue','Baisse de vigilance (si réglage GPS en roulant)','Fatigue / endormissement (régulateur sur autoroute)','Prise de risque (dans une voiture sécurisante)','Risque d\'être surpris en cas de défaillance','Ne pas vérifier les angles morts (dépassement / manœuvre…)'] }
       ]}
     ]
-  }
+  },
 ];
 
 // État mode oral
