@@ -756,7 +756,7 @@
       <h1>Quiz Permis D</h1>
       <p>CATÉGORIE D — TRANSPORT EN COMMUN</p>
     </div>
-    <div style="margin-left:auto;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.05em;background:rgba(61,111,255,0.15);border:1px solid rgba(61,111,255,0.3);border-radius:6px;padding:4px 10px;color:var(--accent2);">V 37i</div>
+    <div style="margin-left:auto;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.05em;background:rgba(61,111,255,0.15);border:1px solid rgba(61,111,255,0.3);border-radius:6px;padding:4px 10px;color:var(--accent2);">V 37j</div>
   </div>
 
   <!-- HOME -->
@@ -1901,7 +1901,7 @@ const ALL_QUESTIONS = [
   {id:"ctcr_004",f:"CTCR",n:4,type:"qcu",q:"Dans le cadre d'un service à la demande, quelle condition permet de déroger à la limite d'amplitude de 12 heures ?",A:"si le temps de travail effectif n'excède pas 10h",B:"si le temps de travail effectif n'excède pas 9h",C:"si le service comporte au moins une pause continue d'1h",D:"il n'y a pas de conditions particulières",correct:"B"},
   {id:"ctcr_005",f:"CTCR",n:5,type:"qcu",q:"Quelle entité est autorité organisatrice en transport scolaire ?",A:"l'entreprise de transport",B:"l'inspection académique",C:"le conseil régional",D:"le responsable de l'établissement scolaire",correct:"C"},
   {id:"ctcr_006",f:"CTCR",n:6,type:"qcu",q:"En double équipage, le temps passé par le 2e conducteur dans un véhicule en marche doit être :",A:"comptabilisé en TTE à 100%",B:"comptabilisé en TTE à 50%",C:"rémunéré à 50%",D:"enregistré sur la position repos du tachygraphe",correct:"B"},
-  {id:"ctcr_007",f:"CTCR",n:7,type:"qcu",q:"Quelle est la durée maximale de conduite continue, de nuit, dans le transport routier de voyageurs ?",A:"3h30",B:"4h00",C:"4h30",D:"9h00",correct:"A"},
+  {id:"ctcr_007",f:"CTCR",n:7,type:"qcu",q:"Quelle est la durée maximale de conduite continue, de nuit, dans le transport routier de voyageurs ?",A:"3h30",B:"4h00",C:"4h30",D:"9h00",correct:"B"},
   {id:"ctcr_008",f:"CTCR",n:8,type:"qcu",q:"En service occasionnel en double équipage, quelle est la limite de l'amplitude ?",A:"12h",B:"14h",C:"16h",D:"18h",correct:"D"},
   {id:"ctcr_009",f:"CTCR",n:9,type:"qcu",q:"Combien de jours de repos minimum doit prendre un conducteur dans le cas d'une organisation de travail « par quatorzaine » ?",A:"2 jours",B:"3 jours",C:"4 jours",D:"5 jours",correct:"B"},
   {id:"ctcr_010",f:"CTCR",n:10,type:"qcu",q:"Qu'est-ce qu'un transport parascolaire ?",A:"un transport d'enfants dont l'âge dépasse 10 ans",B:"un transport d'enfants vers une station de ski pour une classe de neige",C:"un transport d'enfants de l'établissement scolaire à la piscine pendant les heures de classe",D:"un transport exclusif d'enfants à mobilité réduite",correct:"B"},
@@ -2040,7 +2040,7 @@ const TOTAL = ALL_QUESTIONS.length;
 //   quizCount: number
 // ═══════════════════════════════════════════════
 
-const APP_VERSION = 'v37i'; // Jamais de reset auto — uniquement pour info // Changer à chaque mise à jour pour reset les stats
+const APP_VERSION = 'v37j'; // Jamais de reset auto — uniquement pour info // Changer à chaque mise à jour pour reset les stats
 
 function loadStats() {
   try {
@@ -4048,7 +4048,7 @@ function goBack() { if(current>0){ stopTTS(); current--; renderQuestion(); } }
 function goNext() {
   stopTTS(); // Couper lecture avant de passer à la suivante
   const q = questions[current];
-  if (q.type!=='open' && q.type!=='trous' && q.type!=='qcu' && !answers[current]) {
+  if (q.type!=='open' && q.type!=='trous' && !answers[current]) {
     const area = document.getElementById('answers-area');
     area.style.animation='none'; area.offsetHeight; area.style.animation='shake 0.4s ease';
     return;
@@ -4234,11 +4234,6 @@ function showResults() {
   items.forEach((item,i)=>{
     if (item.q.type === 'qcu') {
       const q = item.q;
-      html+=`<div class="result-item ${item.ok?'correct':'wrong'}" style="animation-delay:${i*0.07}s"><div class="ri-header"><span class="ri-num">Q${i+1}</span><span class="ri-q" style="font-size:12px">${q.q}</span><span class="ri-icon">${item.ok?'✓':'✗'}</span></div><div class="ri-answers" style="font-size:12px;padding:6px 4px">${['A','B','C','D'].map(l=>{const c=l===q.correct?'#22c55e':(l===item.ans&&!item.ok)?'#ef4444':'var(--muted)';const ic=l===q.correct?' ✓':(l===item.ans&&!item.ok)?' ✗':'';return '<div style="color:'+c+';padding:2px 0"><b>'+l+'</b> — '+q[l]+ic+'</div>';}).join('')}</div></div>`;
-      return;
-    }
-    if (item.q.type === 'qcu') {
-      const q = item.q;
       const userLetter = item.ans || '';
       html+=`<div class="result-item ${item.ok?'correct':'wrong'}" style="animation-delay:${i*0.07}s">
         <div class="ri-header">
@@ -4252,8 +4247,9 @@ function showResults() {
             const isUser = l === userLetter;
             const col = isCorrect ? '#22c55e' : (isUser && !isCorrect) ? '#ef4444' : 'var(--muted)';
             const icon = isCorrect ? ' ✓' : (isUser && !isCorrect) ? ' ✗' : '';
-            return '<div style="color:'+col+';padding:2px 0"><b>'+l+'</b> — '+q[l]+icon+'</div>';
+            return '<div style="color:'+col+';padding:2px 0"><b>'+l+'</b> \u2014 '+q[l]+icon+'</div>';
           }).join('')}
+          ${!userLetter ? '<div style="color:#ef4444;font-style:italic;margin-top:4px;">\u26a0 Tu n\'as pas r\u00e9pondu \u00e0 cette question</div>' : ''}
         </div>
       </div>`;
       return;
